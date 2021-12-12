@@ -7,8 +7,6 @@ import { gameNameValidation, numberValidation } from "../services/validators";
 
 const GameRegisterPage = () => {
 
-  // nome, preço, estoque, imagem
-
   const [gameName, setGameName] = useState('');
   const [gamePrice, setGamePrice] = useState('');
   const [stockQuantity, setStockQuantity] = useState('');
