@@ -24,6 +24,8 @@ const GameRegisterPage = () => {
     step: 'any',
   };
 
+  const currencyOptions = ['Reais', 'Euros', 'Dólares', 'Ienes', 'Pesos', 'Francos Suíços'];
+
   const quantityInStockProps = {
     id: 'mix-stock-quantity',
     name: 'Quantas unidades em estoque?',
@@ -41,6 +43,12 @@ const GameRegisterPage = () => {
     <div>
       <Input {...gameNameProps} />
       <Input {...gamePriceProps} />
+      <label htmlFor="mix-currencies">
+        Qual moeda?
+        <select id="mix-currencies">
+          {currencyOptions.map((option) => <option key={option}>{option}</option>)}
+        </select>
+      </label>
       <Input {...quantityInStockProps} />
       <Input {...gameImageProps} />
     </div>
