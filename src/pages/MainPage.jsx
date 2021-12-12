@@ -11,8 +11,10 @@ const MainPage = () => {
   if(games.length === 0) return <div>loading</div>
 
   return(
-    <div>
-
+    <div style={{ display: 'flex' }}>
+      {
+        games.map((game) => <GameCard data={game} />)
+      }
     </div>
   );
 }
