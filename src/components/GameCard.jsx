@@ -10,10 +10,9 @@ const GameCard = ({ data }) => {
   useEffect(() => {
     const checkout = getLocalStorageKey('mixCheckout');
     const isItemInCart = checkout.find((item) => item.game === game);
-    console.log(isItemInCart)
+
     if(isItemInCart) {
-      console.log('teste')
-      setGameInCart(true)
+      setGameInCart(true);
     }
   }, [isGameInCart]);
 
@@ -31,8 +30,8 @@ const GameCard = ({ data }) => {
   return <div style={{ width: '300px', height: '400px', margin: '20px' }}>
     <img src={image} alt="Capa do jogo." style={{ width: '300px', height: '190px' }} />
     <h1>{game}</h1>
-    <p>{stock}</p>
-    <h3>{price}</h3>
+    <p>Quantidade em estoque: {stock}</p>
+    <h3>Preço: {price}</h3>
     <Button {...addToCartButtonProps} />
   </div>
 };
