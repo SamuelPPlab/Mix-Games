@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from '../components/Input';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator, passwordMatcher, validateUserName } from "../services/validators";
 
@@ -13,15 +13,27 @@ const SignUp = () => {
   const [goToMain, setGoToMain] = useState(false);
   const [disableSignUp, setDisableSignUp] = useState(true);
 
+  useEffect(() => {
+    const isUsernameValid = validateUserName(fullName);
+    const isEmailValid = emailValidator(email);
+    const isPasswordValid = passwordLengthValidator(passwordInput);
+    const doPasswordsMatch = passwordMatcher(passwordInput, confirmPassword);
+    if(isEmailValid && isUsernameValid && isPasswordValid && doPasswordsMatch) {
+      return setDisableSignUp(false);
+    }
+    setDisableSignUp(true);
+  }, [fullName, email, passwordInput, confirmPassword]);
+
+
   const nameProps = {
-    id: 'nomeCompleto',
+    id: 'mix-nome-completo-signup',
     name: 'Nome Completo',
     fieldValue: fullName,
     setFieldValue: setFullName,
   };
 
   const emailProps = {
-    id: "email",
+    id: "mix-email-signup",
     name: "Email",
     fieldValue: email,
     setFieldValue: setEmail,
@@ -29,7 +41,7 @@ const SignUp = () => {
   };
 
   const passwordInputProps = {
-    id: "Senha",
+    id: "mix-senha",
     name: "Senha",
     fieldValue: passwordInput,
     setFieldValue: setPasswordInput,
@@ -37,7 +49,7 @@ const SignUp = () => {
   };
 
   const confirmPasswordProps = {
-    id: "ConfirmarSenha",
+    id: "mix-confirmar-senha",
     name: "Confirmar Senha",
     fieldValue: confirmPassword,
     setFieldValue: setConfirmPassword,
@@ -45,14 +57,12 @@ const SignUp = () => {
   };
 
   const signUpButtonProps = {
-    id: "Cadastrar",
+    id: "mix-cadastrar",
     name: "Cadastrar",
     onClick: () => {
-      userRegistration(fullName, passwordInput, email);
       setGoToMain(true);
     },
     disabled: disableSignUp,
-    className: disableSignUp ? 'submitLoginDisabled' : 'submitLoginEnabled',
   };
 
   const alreadySingnedUp = <pre className="noAccount">
@@ -74,6 +84,8 @@ const SignUp = () => {
   const differentPasswordsWarning = <div className="warningText warningPadding">
   As senhas devem ser iguais.
   </div>;
+
+  if(goToMain) return <Navigate to="/main" />;
 
   return(
     <div>
