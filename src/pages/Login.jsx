@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import { emailValidator, passwordLengthValidator } from '../services/validators';
+import { emailValidator, passwordLengthValidator } from '../services/validators';g
 
 const Login = () => {
   
