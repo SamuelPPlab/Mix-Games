@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import GameCard from "../components/GameCard";
 
 const MainPage = () => {
   const [games, setGames] = useState([]);
@@ -11,7 +12,7 @@ const MainPage = () => {
 
   return(
     <div>
-      
+
     </div>
   );
 }
