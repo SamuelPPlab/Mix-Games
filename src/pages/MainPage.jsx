@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import GameCard from "../components/GameCard";
-import { getLocalStorageKey } from "../services/getKey";
 
 const MainPage = () => {
   const [games, setGames] = useState([]);

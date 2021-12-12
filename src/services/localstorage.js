@@ -15,3 +15,10 @@ export const saveGameData = (game, price, currency, stock, image) => {
 
   localStorage.setItem('gameStock', JSON.stringify([...productsInStock, newGame]))
 };
+
+export const removeGameFromCart = (game) => {
+  let itemsOnCart = getLocalStorageKey('mixCheckout');
+  itemsOnCart = itemsOnCart.filter((item) => (item.game !== game));
+  console.log(itemsOnCart)
+  localStorage.setItem('mixCheckout', JSON.stringify(itemsOnCart));
+};
