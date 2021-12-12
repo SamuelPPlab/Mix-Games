@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import { saveGameData } from "../services/localstorage";
 import { gameNameValidation, numberValidation } from "../services/validators";
 
 const GameRegisterPage = () => {
@@ -64,7 +65,8 @@ const GameRegisterPage = () => {
     name: "Registrar Jogo",
     id: "mix-submitGame",
     onClick: () => {
-      return setRedirect(true);
+      saveGameData(gameName, gamePrice, chosenCurrency, stockQuantity, gameIMG);
+      setRedirect(true);
     },
     disabled: !allowGameRegister,
   };
