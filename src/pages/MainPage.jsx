@@ -6,8 +6,6 @@ const MainPage = () => {
   const [games, setGames] = useState([]);
   
   useEffect(() => {
-    getLocalStorageKey('mixCheckout');
-
     if(games.length === 0) {
       setGames(JSON.parse(localStorage.getItem('gameStock')));
     }

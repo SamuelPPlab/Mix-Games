@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getLocalStorageKey } from "../services/getKey";
 import Button from "./Button";
 
@@ -6,6 +6,16 @@ const GameCard = ({ data }) => {
   const { game, image, price, stock } = data;
 
   const [isGameInCart, setGameInCart] = useState(false);
+
+  useEffect(() => {
+    const checkout = getLocalStorageKey('mixCheckout');
+    const isItemInCart = checkout.find((item) => item.game === game);
+    console.log(isItemInCart)
+    if(isItemInCart) {
+      console.log('teste')
+      setGameInCart(true)
+    }
+  }, [isGameInCart]);
 
   const addToCartButtonProps = {
     name: 'Adicionar ao carrinho',
