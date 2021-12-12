@@ -89,7 +89,7 @@ const SignUp = () => {
 
   return(
     <div>
-      <h1 className="welcomeText">Cadastre-se</h1>
+      <h1>Cadastre-se</h1>
       <Input {...nameProps} />
       {(!validateUserName(fullName) && fullName !== '') && nameWarning}
       <Input {...emailProps} />
