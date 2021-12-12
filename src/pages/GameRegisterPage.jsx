@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import Button from "../components/Button";
 import Input from "../components/Input";
+import { gameNameValidation, numberValidation } from "../services/validators";
 
 const GameRegisterPage = () => {
 
@@ -10,7 +13,19 @@ const GameRegisterPage = () => {
   const [stockQuantity, setStockQuantity] = useState('');
   const [gameIMG, setGameIMG] = useState('');
   const [chosenCurrency, setChosenCurrency] = useState('Reais');
-  console.log(chosenCurrency)
+  const [allowGameRegister, setAllowGameRegister] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
+  useEffect(() => {
+    const isNameValid = gameNameValidation(gameName);
+    const isPriceValid = numberValidation(gamePrice);
+    const isStockValid = numberValidation(stockQuantity);
+
+    if(isNameValid && isPriceValid && isStockValid) {
+      return setAllowGameRegister(true);
+    }
+    return setAllowGameRegister(false);
+  }, [gamePrice, gameName, stockQuantity]);
 
   const gameNameProps = {
     id: 'mix-game-name',
@@ -45,10 +60,21 @@ const GameRegisterPage = () => {
     fieldValue: gameIMG,
   };
 
+  const submitGameProps = {
+    name: "Registrar Jogo",
+    id: "mix-submitGame",
+    onClick: () => {
+      return setRedirect(true);
+    },
+    disabled: !allowGameRegister,
+  };
+
+  if(redirect) return <Navigate to="/main" />;
+
   return(
     <div>
       <Input {...gameNameProps} />
-      <div>
+      <div style={{ display: 'flex' }}>
         <Input {...gamePriceProps} />
         <select onChange={({ target: { value } }) => setChosenCurrency(value)}>
           {currencyOptions.map((option) => <option key={option}>{option}</option>)}
@@ -56,6 +82,7 @@ const GameRegisterPage = () => {
       </div>
       <Input {...quantityInStockProps} />
       <Input {...gameImageProps} />
+      <Button {...submitGameProps} />
     </div>
   );
 };
