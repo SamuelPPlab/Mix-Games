@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
+import CheckoutTable from "../components/CheckoutTable";
 import { getLocalStorageKey } from "../services/getKey";
-import { removeGameFromCart } from "../services/localstorage";
 
 const Cart = () => {
   const [products, setProducts] = useState(false);
@@ -13,15 +13,7 @@ const Cart = () => {
     }
   }, [products]);
 
-  const removeItemFromCart = {
-    name: 'X',
-    id: 'mix-remove-game',
-  };
-
-  const handleRemoveClick = (game) => {
-    removeGameFromCart(game);
-    setProducts(products.filter((item) => item.game !== game));
-  };
+  
 
   if(!products) return <div>Loading</div>;
 
@@ -30,27 +22,12 @@ const Cart = () => {
 
   return(
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Preço</th>
-            <th>Remover Game</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            products.map(({game, formattedPrice}) => (
-              <tr key={game}>
-                <td>{game}</td>
-                <td>{formattedPrice}</td>
-                <td><Button {...removeItemFromCart} onClick={() => handleRemoveClick(game)} /></td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-      <h3>Total: {`${total[0]},${total[1]}`}</h3>
+      {
+        products.length > 0 && <CheckoutTable products={products} />
+      }
+      {
+        products.length === 0 && <h1>Não há produtos no seu carrinho</h1>
+      }
     </div>
   );
 };
