@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import GameCard from "../components/GameCard";
+import { getLocalStorageKey } from "../services/getKey";
 
 const MainPage = () => {
   const [games, setGames] = useState([]);
   
   useEffect(() => {
-    if(games.length === 0) {
-      setGames(JSON.parse(localStorage.getItem('gameStock')));
-    }
-  }, [games]);
+    setGames(getLocalStorageKey('gameStock'));
+  }, []);
 
-  if(games.length === 0) return <div>loading</div>;
+  if(!games) return <div>loading</div>;
+
+  if(games.length === 0) return <h1>Não há itens no estoque.</h1>;
 
   return(
     <div style={{ display: 'flex', flexWrap: 'wrap', width: '100vw' }}>
