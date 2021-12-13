@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import Button from "../components/Button";
 import CheckoutTable from "../components/CheckoutTable";
 import { getLocalStorageKey } from "../services/getKey";
 
 const Cart = () => {
   const [products, setProducts] = useState(false);
+  const [goToMain, setGoToMain] = useState(false);
 
   useEffect(() => {
     const itemsOnCart = getLocalStorageKey('mixCheckout');
@@ -13,10 +15,14 @@ const Cart = () => {
     }
   }, [products]);
 
-  if(!products) return <div>Loading</div>;
+  const backToShoppingProps = {
+    id: 'mix-back-to-shoppig',
+    name: 'Voltar à loja',
+    onClick: () => setGoToMain(true),
+  };
 
-  let total = products.reduce((a, { price }) => (a + parseFloat(price)), 0).toFixed(2);
-  total = total.split('.');
+  if(!products) return <div>Loading</div>;
+  if(goToMain) return <Navigate to="/main" />;
 
   return(
     <div>
@@ -24,7 +30,10 @@ const Cart = () => {
         products.length > 0 && <CheckoutTable products={products} setProducts={setProducts} />
       }
       {
-        products.length === 0 && <h1>Não há produtos no seu carrinho</h1>
+        products.length === 0 && <div>
+          <h1>Não há produtos no seu carrinho</h1>
+          <Button {...backToShoppingProps} />
+        </div>
       }
     </div>
   );
