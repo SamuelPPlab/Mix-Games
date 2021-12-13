@@ -13,8 +13,6 @@ const Cart = () => {
     }
   }, [products]);
 
-  
-
   if(!products) return <div>Loading</div>;
 
   let total = products.reduce((a, { price }) => (a + parseFloat(price)), 0).toFixed(2);
@@ -23,7 +21,7 @@ const Cart = () => {
   return(
     <div>
       {
-        products.length > 0 && <CheckoutTable products={products} />
+        products.length > 0 && <CheckoutTable products={products} setProducts={setProducts} />
       }
       {
         products.length === 0 && <h1>Não há produtos no seu carrinho</h1>
