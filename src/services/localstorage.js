@@ -8,7 +8,8 @@ export const saveGameData = (game, price, currency, stock, image) => {
 
   const newGame = {
     game,
-    price: `${formattedPrice[0]},${formattedPrice[1]} ${currency}`,
+    formattedPrice: `${formattedPrice[0]},${formattedPrice[1]} ${currency}`,
+    price,
     stock,
     image,
   };
@@ -19,6 +20,5 @@ export const saveGameData = (game, price, currency, stock, image) => {
 export const removeGameFromCart = (game) => {
   let itemsOnCart = getLocalStorageKey('mixCheckout');
   itemsOnCart = itemsOnCart.filter((item) => (item.game !== game));
-  console.log(itemsOnCart)
   localStorage.setItem('mixCheckout', JSON.stringify(itemsOnCart));
 };

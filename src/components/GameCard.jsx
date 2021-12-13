@@ -3,7 +3,7 @@ import { getLocalStorageKey } from "../services/getKey";
 import Button from "./Button";
 
 const GameCard = ({ data }) => {
-  const { game, image, price, stock } = data;
+  const { game, image, formattedPrice, stock } = data;
 
   const [isGameInCart, setGameInCart] = useState(false);
 
@@ -31,7 +31,7 @@ const GameCard = ({ data }) => {
     <img src={image} alt="Capa do jogo." style={{ width: '300px', height: '190px' }} />
     <h1>{game}</h1>
     <p>Quantidade em estoque: {stock}</p>
-    <h3>Preço: {price}</h3>
+    <h3>Preço: {formattedPrice}</h3>
     <Button {...addToCartButtonProps} />
   </div>
 };
