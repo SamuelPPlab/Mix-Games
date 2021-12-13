@@ -11,7 +11,6 @@ const GameRegisterPage = () => {
   const [gamePrice, setGamePrice] = useState('');
   const [stockQuantity, setStockQuantity] = useState('');
   const [gameIMG, setGameIMG] = useState('');
-  const [chosenCurrency, setChosenCurrency] = useState('Reais');
   const [allowGameRegister, setAllowGameRegister] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
@@ -28,21 +27,19 @@ const GameRegisterPage = () => {
 
   const gameNameProps = {
     id: 'mix-game-name',
-    name: 'Nome do jogo',
+    name: 'Nome do jogo:',
     setFieldValue: setGameName,
     fieldValue: gameName,
   };
 
   const gamePriceProps = {
     id: 'mix-game-price',
-    name: 'Preço',
+    name: 'Preço em Reais:',
     setFieldValue: setGamePrice,
     fieldValue: gamePrice,
     type: 'number',
     step: 'any',
   };
-
-  const currencyOptions = ['Reais', 'Euros', 'Dólares', 'Ienes', 'Pesos', 'Francos Suíços'];
 
   const quantityInStockProps = {
     id: 'mix-stock-quantity',
@@ -54,7 +51,7 @@ const GameRegisterPage = () => {
 
   const gameImageProps = {
     id: 'mix-game-image',
-    name: 'Cole o URL da imagem',
+    name: 'Cole o URL da imagem:',
     setFieldValue: setGameIMG,
     fieldValue: gameIMG,
   };
@@ -63,7 +60,7 @@ const GameRegisterPage = () => {
     name: "Registrar Jogo",
     id: "mix-submitGame",
     onClick: () => {
-      saveGameData(gameName, gamePrice, chosenCurrency, stockQuantity, gameIMG);
+      saveGameData(gameName, gamePrice, stockQuantity, gameIMG);
       setRedirect(true);
     },
     disabled: !allowGameRegister,
@@ -74,12 +71,7 @@ const GameRegisterPage = () => {
   return(
     <div>
       <Input {...gameNameProps} />
-      <div style={{ display: 'flex' }}>
-        <Input {...gamePriceProps} />
-        <select onChange={({ target: { value } }) => setChosenCurrency(value)}>
-          {currencyOptions.map((option) => <option key={option}>{option}</option>)}
-        </select>
-      </div>
+      <Input {...gamePriceProps} />
       <Input {...quantityInStockProps} />
       <Input {...gameImageProps} />
       <Button {...submitGameProps} />

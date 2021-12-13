@@ -43,10 +43,10 @@ const CheckoutTable = ({ products, setProducts }) => {
         </thead>
         <tbody>
           {
-            products.map(({game, formattedPrice}) => (
+            products.map(({game, price}) => (
               <tr key={game}>
                 <td>{game}</td>
-                <td>{formattedPrice}</td>
+                <td>{parseFloat(price).toFixed(2)}</td>
                 <td><Button {...removeItemFromCart} onClick={() => handleRemoveClick(game)} /></td>
               </tr>
             ))
@@ -54,7 +54,7 @@ const CheckoutTable = ({ products, setProducts }) => {
         </tbody>
       </table>
       <div>
-        <h3>Total: {`${total[0]},${total[1]}`}</h3>
+        <h3>Total: R$ {`${total[0]},${total[1]}`}</h3>
         <Button {...buyButonProps} onClick={handlePurchaseClick} />
       </div>
     </div>

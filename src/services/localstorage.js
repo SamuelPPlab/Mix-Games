@@ -1,6 +1,6 @@
 import { getLocalStorageKey } from "./getKey";
 
-export const saveGameData = (game, price, currency, stock, image) => {
+export const saveGameData = (game, price, stock, image) => {
   const productsInStock = getLocalStorageKey('gameStock');
 
   let formattedPrice = parseFloat(price).toFixed(2);
@@ -8,7 +8,6 @@ export const saveGameData = (game, price, currency, stock, image) => {
 
   const newGame = {
     game,
-    formattedPrice: `${formattedPrice[0]},${formattedPrice[1]} ${currency}`,
     price,
     stock,
     image,
