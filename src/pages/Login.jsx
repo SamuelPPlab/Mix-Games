@@ -51,7 +51,7 @@ const Login = () => {
   const notRegisteredWarning = <div className="warningText">Usuário não registrado ou senha inválida!</div>;
   const noAccount = <pre className="noAccount">Ainda não possui cadastro? <Link to="/signup">Cadastre-se</Link></pre>;
 
-  if(redirect) return <Navigate to="/main" />
+  if(redirect) return <Navigate to="/main" />;
 
   return (
     <div>
