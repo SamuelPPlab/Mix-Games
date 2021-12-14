@@ -3,6 +3,7 @@ import { Navigate, Link } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator } from '../services/validators';
+import '../css/styles.css';
 
 const Login = () => {
 
@@ -21,9 +22,11 @@ const Login = () => {
     }
   }, [email, passwordInput]);
 
+
   const emailInputProps = {
     id: "mix-email",
-    name: "Email",
+    name: 'Email:',
+    placeholder: "Digite seu e-mail",
     fieldValue: email,
     setFieldValue: setEmail,
     type: "email",
@@ -31,7 +34,8 @@ const Login = () => {
 
   const passwordInputProps = {
     id: "mix-password",
-    name: "Password",
+    name: 'Senha:',
+    placeholder: "Digite sua senha",
     fieldValue: passwordInput,
     setFieldValue: setPasswordInput,
     type: "password",
@@ -54,11 +58,16 @@ const Login = () => {
   if(redirect) return <Navigate to="/main" />;
 
   return (
-    <div>
-      <Input {...emailInputProps} />
-      {(!emailValidator(email) && email !== '') && emailWarning}
-      <Input {...passwordInputProps} />
-      {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
+    <div style={{ display: 'flex', flexDirection: 'column', width: '50vw', justifyContent: 'space-around', background: '#cdcdcd', height: '100vh' }}>
+      <h1 id="welcome">Seja bem-vindo!</h1>
+      <div className='loginInputContainer'>
+        <Input {...emailInputProps} />
+        {(!emailValidator(email) && email !== '') && emailWarning}
+      </div>
+      <div className='loginInputContainer'>
+        <Input {...passwordInputProps} />
+        {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
+      </div>
       {notRegistered && notRegisteredWarning}
       <Button {...loginButtonProps} />
       {noAccount}

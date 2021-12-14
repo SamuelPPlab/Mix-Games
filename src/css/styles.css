@@ -1,0 +1,58 @@
+input {
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 12px;
+  border-radius: 20px;
+  margin: 30px;
+  outline: none;
+  margin-top: 20px;
+  background-color: #cdcdcd;
+  border-color: #fdc60f;
+  width: 100%;
+  height: 40px;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+label {
+  position: relative;
+  width: 100%;
+}
+
+label .placeholderSpan {
+  position: absolute;
+  left: 45px;
+  top: 10px;
+  transform: translateY(-50%);
+  width: '50%';
+  padding: 0 5px;
+}
+
+.placeholderSpan {
+  font-size: 14px;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  color: grey;
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+.loginInputContainer {
+  width: 80%;
+  margin-left: 7%;
+}
+
+label input:focus + .placeholderSpan {
+  top: -25px;
+  color: black;
+  background-color: #cdcdcd;
+  font-size: 12px;
+}
+
+#welcome {
+  font-size: 5em;
+  text-align: center;
+}
