@@ -17,12 +17,20 @@ const MainPage = () => {
 
   return(
     <div id="mainPageContainer">
-      <Link to="/checkout">
-        <button id='mix-go-to-checkout'>Ver carrinho</button>
-      </Link>
-      {
-        games.map((game) => <GameCard key={Math.random()} data={game} />)
-      }
+      <div id="mainPageHeader">
+        <Link to="/register-game">
+          <button id="mix-register-game">Registrar um jogo</button>
+        </Link>
+        <h1>Veja nossos jogos: </h1>
+        <Link to="/checkout">
+          <button id='mix-go-to-checkout'>Ver carrinho</button>
+        </Link>
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', width: '85%' }}>
+        {
+          games.map((game) => <GameCard key={Math.random()} data={game} />)
+        }
+      </div>
     </div>
   );
 };
