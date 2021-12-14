@@ -75,6 +75,11 @@ const GameRegisterPage = () => {
 
   if(redirect) return <Navigate to="/main" />;
 
+  const noEmptyNameWarning = <div className="warningText">O nome do jogo não pode estar vazio.</div>;
+  const noFreeGameWarning = <div className="warningText">O seu jogo não vai ser vendido de graça.</div>;
+  const noEmptyStock = <div className="warningText">Você não pode deixar o estoque vazio.</div>;
+  const addAnImageURL = <div className="warningText">Por favor adicione a URL.</div>;
+
   return(
     <div style={{ width: '100vw', height: '100vh' }}>
       <img src={RegisterGameBackground} alt="Background" className="backgroundImage" />
@@ -82,15 +87,19 @@ const GameRegisterPage = () => {
         <h1 style={{ fontSize: '3em' }}>Registre seu game</h1>
         <div className="halfScreenWidth">
           <Input {...gameNameProps} />
+          {gameName === '' && noEmptyNameWarning}
         </div>
         <div className="halfScreenWidth">
           <Input {...gamePriceProps} />
+          {(gamePrice === '0' || gamePrice === '') && noFreeGameWarning}
         </div>
         <div className="halfScreenWidth">
           <Input {...quantityInStockProps} />
+          {(stockQuantity === '' || stockQuantity === '0') && noEmptyStock}
         </div>
         <div className="halfScreenWidth">
           <Input {...gameImageProps} />
+          {gameIMG === '' && addAnImageURL}
         </div>
         <Button {...submitGameProps} />
       </div>
