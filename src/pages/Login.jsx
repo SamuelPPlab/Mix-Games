@@ -19,9 +19,9 @@ const Login = () => {
     const isEmailValid = emailValidator(email);
     const isPasswordValid = passwordLengthValidator(passwordInput);
     if(isEmailValid && isPasswordValid) {
-      setIsDisabled(false);
+      return setIsDisabled(false);
     }
-    setIsDisabled(true);
+    return setIsDisabled(true);
   }, [email, passwordInput]);
 
 
@@ -55,7 +55,7 @@ const Login = () => {
   const emailWarning = <div className="warningText">O email deve ter o formato correto.</div>;
   const passwordLengthWarning = <div className="warningText">A senha deve ter pelo menos oito caracteres.</div>;
   const notRegisteredWarning = <div className="warningText">Usuário não registrado ou senha inválida!</div>;
-  const noAccount = <pre className="noAccount">Ainda não possui cadastro? <Link to="/signup">Cadastre-se</Link></pre>;
+  const noAccount = <pre id="noAccount">Ainda não possui cadastro? <Link to="/signup">Cadastre-se</Link></pre>;
 
   if(redirect) return <Navigate to="/main" />;
 
