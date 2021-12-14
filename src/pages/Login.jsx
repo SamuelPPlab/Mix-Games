@@ -21,6 +21,7 @@ const Login = () => {
     if(isEmailValid && isPasswordValid) {
       setIsDisabled(false);
     }
+    setIsDisabled(true);
   }, [email, passwordInput]);
 
 
