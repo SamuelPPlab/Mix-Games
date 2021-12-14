@@ -186,6 +186,13 @@ label .placeholderSpan {
   text-align: center;
 }
 
+#checkoutContainer {
+  background-image: url('../images/CheckoutBackground.jpg');
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+}
+
 #login-form-container {
   display: flex;
   flex-direction: column;

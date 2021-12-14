@@ -25,7 +25,7 @@ const Cart = () => {
   if(goToMain) return <Navigate to="/main" />;
 
   return(
-    <div>
+    <div id="checkoutContainer">
       {
         products.length > 0 && <CheckoutTable products={products} setProducts={setProducts} />
       }
