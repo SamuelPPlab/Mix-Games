@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getLocalStorageKey } from "../services/getKey";
 import Button from "./Button";
+import '../css/styles.css';
 
 const GameCard = ({ data }) => {
   const { game, image, price, stock } = data;
@@ -27,13 +28,17 @@ const GameCard = ({ data }) => {
     disabled: isGameInCart,
   };
 
-  return <div style={{ width: '300px', height: '400px', margin: '20px' }}>
-    <img src={image} alt="Capa do jogo." style={{ width: '300px', height: '190px' }} />
-    <h1>{game}</h1>
-    <p>Quantidade em estoque: {stock}</p>
-    <h3>R$: {parseFloat(price).toFixed(2)}</h3>
-    <Button {...addToCartButtonProps} />
-  </div>
+  return (
+    <div className="gameCardContainer">
+      <img src={image} alt="Capa do jogo." className="gameImage"/>
+      <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'space-between' }}>
+        <h1>{game}</h1>
+        <p>Quantidade em estoque: {stock};</p>
+        <h3>R$: {parseFloat(price).toFixed(2)};</h3>
+      </div>
+      <Button {...addToCartButtonProps} />
+    </div>
+  );
 };
 
 export default GameCard;

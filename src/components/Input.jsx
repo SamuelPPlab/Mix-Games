@@ -15,7 +15,7 @@ const Input = ({ fieldValue = null, id, className = null, placeholderClass, plac
     step,
     autocomplete: 'off',
   };
-console.log(placeholderClass)
+
   return (
     <label style={style} htmlFor={id}>
       <input {...inputProps} />
