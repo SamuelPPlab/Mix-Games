@@ -61,14 +61,14 @@ const Login = () => {
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
-      <img id="loginImage" src={LoginImage} alt="Prophet do Crysis 2" />
-      <div style={{ display: 'flex', flexDirection: 'column', width: '50vw', justifyContent: 'space-around', background: 'transparent', height: '100vh', marginLeft: '42vw', position: 'absolute' }}>
+      <img id="loginImage" src={LoginImage} alt="Background" />
+      <div id='login-form-container'>
         <h1 id="welcome">Mix Games</h1>
-        <div className='loginInputContainer'>
+        <div className='loginInputContainer loginInput'>
           <Input {...emailInputProps} />
           {(!emailValidator(email) && email !== '') && emailWarning}
         </div>
-        <div className='loginInputContainer'>
+        <div className='loginInputContainer loginInput'>
           <Input {...passwordInputProps} />
           {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
         </div>
