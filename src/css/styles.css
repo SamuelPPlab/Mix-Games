@@ -88,7 +88,7 @@ label .placeholderSpan {
   height: 40px;
 }
 
-.mix-left-form-submit button {
+.mix-left-form-submit {
   width: 50%;
   align-self: center;
 }
