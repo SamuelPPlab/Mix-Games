@@ -90,7 +90,7 @@ label .placeholderSpan {
 
 .mix-left-form-submit button {
   width: 50%;
-  margin-left: 25%;
+  align-self: center;
 }
 
 .nav-link {
