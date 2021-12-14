@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator, passwordMatcher, validateUserName } from "../services/validators";
 import SignupImage from '../images/SignupImage.jpg';
+import '../css/styles.css';
 
 const SignUp = () => {
 
@@ -68,6 +69,7 @@ const SignUp = () => {
       setGoToMain(true);
     },
     disabled: disableSignUp,
+    className: 'mix-left-form-submit',
   };
 
   const alreadySingnedUp = <pre id="navsignup" className="nav-link">
@@ -95,21 +97,21 @@ const SignUp = () => {
   return(
     <div style={{ width: '100vw', height: '100vh' }}>
       <img className="backgroundImage" src={SignupImage} alt="Background" />
-      <div id="signup-form-container">
+      <div className="leftSideForm">
         <h1 id="signup-title">Crie sua conta</h1>
-        <div className="signupInputContainer">
+        <div className="halfScreenWidth">
           <Input {...nameProps} />
           {(!validateUserName(fullName) && fullName !== '') && nameWarning}
         </div>
-        <div className="signupInputContainer">
+        <div className="halfScreenWidth">
           <Input {...emailProps} />
           {(!emailValidator(email) && email !== '') && emailWarning}
         </div>
-        <div className="signupInputContainer">
+        <div className="halfScreenWidth">
           <Input {...passwordInputProps} />
           {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
         </div>
-        <div className="signupInputContainer">
+        <div className="halfScreenWidth">
           <Input {...confirmPasswordProps} />
           {!passwordMatcher(passwordInput, confirmPassword) && differentPasswordsWarning}
         </div>

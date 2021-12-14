@@ -4,6 +4,8 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import { saveGameData } from "../services/localstorage";
 import { gameNameValidation, numberValidation } from "../services/validators";
+import RegisterGameBackground from "../images/RegisterGameBackground.jpg";
+import '../css/styles.css';
 
 const GameRegisterPage = () => {
 
@@ -30,6 +32,7 @@ const GameRegisterPage = () => {
     name: 'Nome do jogo:',
     setFieldValue: setGameName,
     fieldValue: gameName,
+    placeholder: 'Qual o nome do jogo?',
   };
 
   const gamePriceProps = {
@@ -39,6 +42,7 @@ const GameRegisterPage = () => {
     fieldValue: gamePrice,
     type: 'number',
     step: 'any',
+    placeholder: 'Quanto vai custar? (em Reais)',
   };
 
   const quantityInStockProps = {
@@ -47,6 +51,7 @@ const GameRegisterPage = () => {
     setFieldValue: setStockQuantity,
     fieldValue: stockQuantity,
     type: 'number',
+    placeholder: 'Quantas unidades no estoque?',
   };
 
   const gameImageProps = {
@@ -54,6 +59,7 @@ const GameRegisterPage = () => {
     name: 'Cole o URL da imagem:',
     setFieldValue: setGameIMG,
     fieldValue: gameIMG,
+    placeholder: 'Cole o URL da capa do jogo.'
   };
 
   const submitGameProps = {
@@ -64,17 +70,30 @@ const GameRegisterPage = () => {
       setRedirect(true);
     },
     disabled: !allowGameRegister,
+    className: 'mix-left-form-submit',
   };
 
   if(redirect) return <Navigate to="/main" />;
 
   return(
-    <div>
-      <Input {...gameNameProps} />
-      <Input {...gamePriceProps} />
-      <Input {...quantityInStockProps} />
-      <Input {...gameImageProps} />
-      <Button {...submitGameProps} />
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <img src={RegisterGameBackground} alt="Background" className="backgroundImage" />
+      <div className="leftSideForm">
+        <h1 style={{ fontSize: '3em' }}>Registre seu game</h1>
+        <div className="halfScreenWidth">
+          <Input {...gameNameProps} />
+        </div>
+        <div className="halfScreenWidth">
+          <Input {...gamePriceProps} />
+        </div>
+        <div className="halfScreenWidth">
+          <Input {...quantityInStockProps} />
+        </div>
+        <div className="halfScreenWidth">
+          <Input {...gameImageProps} />
+        </div>
+        <Button {...submitGameProps} />
+      </div>
     </div>
   );
 };
