@@ -50,6 +50,7 @@ const Login = () => {
       return setRedirect(true);
     },
     disabled:  isDisabled,
+    className: 'mix-left-form-submit',
   };
 
   const emailWarning = <div className="warningText">O email deve ter o formato correto.</div>;
