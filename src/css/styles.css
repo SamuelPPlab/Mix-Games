@@ -75,7 +75,6 @@ label .placeholderSpan {
   padding-top: 20px;
   margin-bottom: 5px;
   color: grey;
-  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 .loginInputContainer {
@@ -104,13 +103,28 @@ label .placeholderSpan {
   font-size: 15px;
 }
 
-label input:focus + .placeholderSpan {
-  top: -25px;
+.placeholderSpanFocus {
+  top: -110px;
+  border-radius: 5px;
+  padding: 4px;
+  font-weight: 500;
+  position: relative;
   color: black;
   background-color: #cdcdcd;
   font-size: 12px;
-  padding-bottom: 2px;
   border: #202324 solid 2px;
+}
+
+.loginPlaceholder {
+  left: 50px;
+}
+
+.signupPlaceholder {
+  left: -285px;
+}
+
+.gamePlaceholder {
+  left: -250px;
 }
 
 #loginNav {

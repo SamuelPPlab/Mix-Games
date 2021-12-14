@@ -33,6 +33,7 @@ const SignUp = () => {
     fieldValue: fullName,
     setFieldValue: setFullName,
     placeholder: 'Qual seu nome?',
+    placeholderClass: fullName === '' ? 'placeholderSpan' : 'placeholderSpanFocus  signupPlaceholder',
   };
 
   const emailProps = {
@@ -42,6 +43,7 @@ const SignUp = () => {
     setFieldValue: setEmail,
     type: "email",
     placeholder: 'Digite seu email',
+    placeholderClass: email === '' ? 'placeholderSpan' : 'placeholderSpanFocus signupPlaceholder',
   };
 
   const passwordInputProps = {
@@ -51,6 +53,7 @@ const SignUp = () => {
     setFieldValue: setPasswordInput,
     type: "password",
     placeholder: 'Escolha sua senha',
+    placeholderClass: passwordInput === '' ? 'placeholderSpan' : 'placeholderSpanFocus signupPlaceholder',
   };
 
   const confirmPasswordProps = {
@@ -59,7 +62,8 @@ const SignUp = () => {
     fieldValue: confirmPassword,
     setFieldValue: setConfirmPassword,
     type: "password",
-    placeholder: 'Confirme sua senha'
+    placeholder: 'Confirme sua senha',
+    placeholderClass: confirmPassword === '' ? 'placeholderSpan' : 'placeholderSpanFocus signupPlaceholder',
   };
 
   const signUpButtonProps = {

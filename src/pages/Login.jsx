@@ -32,6 +32,7 @@ const Login = () => {
     fieldValue: email,
     setFieldValue: setEmail,
     type: "email",
+    placeholderClass: email === '' ? 'placeholderSpan' : 'placeholderSpanFocus loginPlaceholder',
   };
 
   const passwordInputProps = {
@@ -41,6 +42,7 @@ const Login = () => {
     fieldValue: passwordInput,
     setFieldValue: setPasswordInput,
     type: "password",
+    placeholderClass: passwordInput === '' ? 'placeholderSpan' : 'placeholderSpanFocus loginPlaceholder',
   };
 
   const loginButtonProps = {

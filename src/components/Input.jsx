@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/styles.css';
 
-const Input = ({ name = '', fieldValue = null, id, className = null, placeholder = '', step=null,
+const Input = ({ fieldValue = null, id, className = null, placeholderClass, placeholder = '', step = null,
   setFieldValue = null, type = 'text', readOnly = false, style = null }) => {
 
   const inputProps = {
@@ -13,13 +14,12 @@ const Input = ({ name = '', fieldValue = null, id, className = null, placeholder
     className,
     step,
     autocomplete: 'off',
-    name
   };
-
+console.log(placeholderClass)
   return (
     <label style={style} htmlFor={id}>
       <input {...inputProps} />
-      <span className="placeholderSpan">{placeholder}</span>
+      <span className={placeholderClass}>{placeholder}</span>
     </label>
   );
 };

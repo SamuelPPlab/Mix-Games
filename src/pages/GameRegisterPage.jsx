@@ -32,7 +32,8 @@ const GameRegisterPage = () => {
     name: 'Nome do jogo:',
     setFieldValue: setGameName,
     fieldValue: gameName,
-    placeholder: 'Qual o nome do jogo?',
+    placeholder: 'Como é o nome desse jogo?',
+    placeholderClass: gameName === '' ? 'placeholderSpan' : 'placeholderSpanFocus gamePlaceholder',
   };
 
   const gamePriceProps = {
@@ -43,6 +44,7 @@ const GameRegisterPage = () => {
     type: 'number',
     step: 'any',
     placeholder: 'Quanto vai custar? (em Reais)',
+    placeholderClass: gamePrice === '' ? 'placeholderSpan' : 'placeholderSpanFocus gamePlaceholder',
   };
 
   const quantityInStockProps = {
@@ -51,7 +53,8 @@ const GameRegisterPage = () => {
     setFieldValue: setStockQuantity,
     fieldValue: stockQuantity,
     type: 'number',
-    placeholder: 'Quantas unidades no estoque?',
+    placeholder: 'Quanto temos no estoque?',
+    placeholderClass: stockQuantity === '' ? 'placeholderSpan' : 'placeholderSpanFocus gamePlaceholder',
   };
 
   const gameImageProps = {
@@ -59,7 +62,8 @@ const GameRegisterPage = () => {
     name: 'Cole o URL da imagem:',
     setFieldValue: setGameIMG,
     fieldValue: gameIMG,
-    placeholder: 'Cole o URL da capa do jogo.'
+    placeholder: 'Cole o URL da capa do jogo.',
+    placeholderClass: gameIMG === '' ? 'placeholderSpan' : 'placeholderSpanFocus gamePlaceholder',
   };
 
   const submitGameProps = {
