@@ -4,7 +4,7 @@ input {
   -moz-appearance: none;
   appearance: none;
   padding: 12px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 30px;
   outline: none;
   margin-top: 20px;
@@ -12,7 +12,7 @@ input {
 
 button {
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 30px;
   font-weight: 700;
   background-color: #ebb501;
@@ -65,7 +65,7 @@ label .placeholderSpan {
   text-align: center;
   padding-left: 20px;
   padding-bottom: 5px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-left: 50px;
   border: 1px solid #6b7677 ;
 }
@@ -83,6 +83,22 @@ label .placeholderSpan {
   margin-left: 7%;
 }
 
+.signupInputContainer input {
+  width: 100%;
+  height: 40px;
+}
+
+.nav-link {
+  background-color: gray;
+  width: 300px;
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
 label input:focus + .placeholderSpan {
   top: -25px;
   color: black;
@@ -92,10 +108,36 @@ label input:focus + .placeholderSpan {
   border: #202324 solid 2px;
 }
 
+#loginNav {
+  margin-left: 30%;
+}
+
+#navsignup {
+  margin-left: 27%;
+}
+
+#mix-cadastrar {
+  align-self: center;
+  padding: 10px 100px
+}
+
 #welcome {
   font-size: 5em;
   text-align: center;
   color: black;
+}
+
+#signup-form-container {
+  position: absolute;
+  background: transparent;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  top: 0;
+  height: 100%;
+  margin-left: 30px;
+  width: 40%;
 }
 
 #login-form-container {
@@ -109,21 +151,14 @@ label input:focus + .placeholderSpan {
   position: absolute;
 }
 
-#noAccount {
-  background-color: gray;
-  width: 300px;
-  padding-left: 20px;
-  margin-left: 17vw;
-  padding-right: 30px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border-radius: 10px;
-  font-size: 15px;
+#signup-title {
+  color: rgb(216, 124, 3);
+  font-size: 3.5em;
 }
 
-#loginImage {
-  width: 100%;
-  height: 100%;
+.backgroundImage {
+  width: 100vw;
+  height: 100vh;
 }
 
 #mix-submit-login {

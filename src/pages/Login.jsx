@@ -55,13 +55,13 @@ const Login = () => {
   const emailWarning = <div className="warningText">O email deve ter o formato correto.</div>;
   const passwordLengthWarning = <div className="warningText">A senha deve ter pelo menos oito caracteres.</div>;
   const notRegisteredWarning = <div className="warningText">Usuário não registrado ou senha inválida!</div>;
-  const noAccount = <pre id="noAccount">Ainda não possui cadastro? <Link to="/signup">Cadastre-se</Link></pre>;
+  const noAccount = <pre id="loginNav" className="nav-link">Ainda não possui cadastro? <Link to="/signup">Cadastre-se</Link></pre>;
 
   if(redirect) return <Navigate to="/main" />;
 
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
-      <img id="loginImage" src={LoginImage} alt="Background" />
+    <div style={{ display: 'flex', height: '100vh', width: '100vw' }}>
+      <img className="backgroundImage" src={LoginImage} alt="Background" />
       <div id='login-form-container'>
         <h1 id="welcome">Mix Games</h1>
         <div className='loginInputContainer loginInput'>

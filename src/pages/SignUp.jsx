@@ -3,6 +3,7 @@ import Input from '../components/Input';
 import { Link, Navigate } from "react-router-dom";
 import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator, passwordMatcher, validateUserName } from "../services/validators";
+import SignupImage from '../images/SignupImage.jpg';
 
 const SignUp = () => {
 
@@ -30,6 +31,7 @@ const SignUp = () => {
     name: 'Nome Completo',
     fieldValue: fullName,
     setFieldValue: setFullName,
+    placeholder: 'Qual seu nome?',
   };
 
   const emailProps = {
@@ -38,6 +40,7 @@ const SignUp = () => {
     fieldValue: email,
     setFieldValue: setEmail,
     type: "email",
+    placeholder: 'Digite seu email',
   };
 
   const passwordInputProps = {
@@ -46,6 +49,7 @@ const SignUp = () => {
     fieldValue: passwordInput,
     setFieldValue: setPasswordInput,
     type: "password",
+    placeholder: 'Escolha sua senha',
   };
 
   const confirmPasswordProps = {
@@ -54,6 +58,7 @@ const SignUp = () => {
     fieldValue: confirmPassword,
     setFieldValue: setConfirmPassword,
     type: "password",
+    placeholder: 'Confirme sua senha'
   };
 
   const signUpButtonProps = {
@@ -65,41 +70,52 @@ const SignUp = () => {
     disabled: disableSignUp,
   };
 
-  const alreadySingnedUp = <pre className="noAccount">
+  const alreadySingnedUp = <pre id="navsignup" className="nav-link">
     Já possui um cadastro? <Link to="/">Login</Link>
   </pre>;
 
-  const nameWarning = <div className="warningText warningPadding">
+  const nameWarning = <div className="warningText">
   O nome deve conter apenas letras!
   </div>;
 
-  const emailWarning = <div className="warningText warningPadding">
+  const emailWarning = <div className="warningText">
   O email deve ter o formato correto.
   </div>;
 
-  const passwordLengthWarning = <div className="warningText warningPadding">
+  const passwordLengthWarning = <div className="warningText">
   A senha deve ter pelo menos oito caracteres.
   </div>;
 
-  const differentPasswordsWarning = <div className="warningText warningPadding">
+  const differentPasswordsWarning = <div className="warningText">
   As senhas devem ser iguais.
   </div>;
 
   if(goToMain) return <Navigate to="/main" />;
 
   return(
-    <div>
-      <h1>Cadastre-se</h1>
-      <Input {...nameProps} />
-      {(!validateUserName(fullName) && fullName !== '') && nameWarning}
-      <Input {...emailProps} />
-      {(!emailValidator(email) && email !== '') && emailWarning}
-      <Input {...passwordInputProps} />
-      {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
-      <Input {...confirmPasswordProps} />
-      {!passwordMatcher(passwordInput, confirmPassword) && differentPasswordsWarning}
-      <div>{alreadySingnedUp}</div>
-      <Button {...signUpButtonProps} />
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <img className="backgroundImage" src={SignupImage} alt="Background" />
+      <div id="signup-form-container">
+        <h1 id="signup-title">Crie sua conta</h1>
+        <div className="signupInputContainer">
+          <Input {...nameProps} />
+          {(!validateUserName(fullName) && fullName !== '') && nameWarning}
+        </div>
+        <div className="signupInputContainer">
+          <Input {...emailProps} />
+          {(!emailValidator(email) && email !== '') && emailWarning}
+        </div>
+        <div className="signupInputContainer">
+          <Input {...passwordInputProps} />
+          {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
+        </div>
+        <div className="signupInputContainer">
+          <Input {...confirmPasswordProps} />
+          {!passwordMatcher(passwordInput, confirmPassword) && differentPasswordsWarning}
+        </div>
+        <div>{alreadySingnedUp}</div>
+        <Button {...signUpButtonProps} />
+      </div>
     </div>
   )
 };
