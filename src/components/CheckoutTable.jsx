@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { removeGameFromCart } from "../services/localstorage";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import '../css/styles.css';
 
 const CheckoutTable = ({ products, setProducts }) => {
@@ -55,8 +55,10 @@ const CheckoutTable = ({ products, setProducts }) => {
         </tbody>
       </table>
       <div>
-        <h3>Total: R$ {`${total[0]},${total[1]}`}</h3>
-        <Button {...buyButonProps} onClick={handlePurchaseClick} />
+        <h3 style={{ position: 'relative', left: '430px', fontSize: '2em',  }}>Total: R$ {`${total[0]},${total[1]}`}</h3>
+        <div style={{ width: '60%', display: 'flex', justifyContent: 'space-evenly' }}>
+          <Button {...buyButonProps} onClick={handlePurchaseClick} />
+        </div>
       </div>
     </div>
   );
