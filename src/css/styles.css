@@ -186,11 +186,30 @@ label .placeholderSpan {
   text-align: center;
 }
 
+.gameName {
+  padding: 0 0 10px 10px;
+}
+
+table, th, td {
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+}
+
+th {
+  font-size: 2em;
+}
+
 #checkoutContainer {
   background-image: url('../images/CheckoutBackground.jpg');
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
+  font-weight: 800;
+}
+
+#tableContainer {
+  width: 100%;
 }
 
 #login-form-container {

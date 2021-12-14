@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "./Button";
 import { removeGameFromCart } from "../services/localstorage";
 import { Navigate } from "react-router-dom";
+import '../css/styles.css';
 
 const CheckoutTable = ({ products, setProducts }) => {
   const [goToMain, setGoToMain] = useState(false);
@@ -32,13 +33,13 @@ const CheckoutTable = ({ products, setProducts }) => {
   if(goToMain) return <Navigate to="/main" />;
 
   return(
-    <div>
+    <div id="tableContainer">
       <table>
         <thead>
           <tr>
-            <th>Produto</th>
-            <th>Preço</th>
-            <th>Remover Game</th>
+            <th className="tableHeading">Produto</th>
+            <th className="tableHeading">Preço</th>
+            <th className="tableHeading">Remover Game</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +47,7 @@ const CheckoutTable = ({ products, setProducts }) => {
             products.map(({game, price}) => (
               <tr key={game}>
                 <td>{game}</td>
-                <td>{parseFloat(price).toFixed(2)}</td>
+                <td>R$ {parseFloat(price).toFixed(2)}</td>
                 <td><Button {...removeItemFromCart} onClick={() => handleRemoveClick(game)} /></td>
               </tr>
             ))
