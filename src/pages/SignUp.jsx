@@ -3,6 +3,8 @@ import Input from '../components/Input';
 import { Link, Navigate } from "react-router-dom";
 import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator, passwordMatcher, validateUserName } from "../services/validators";
+import SignupImage from '../images/SignupImage.jpg';
+import '../css/styles.css';
 
 const SignUp = () => {
 
@@ -30,6 +32,8 @@ const SignUp = () => {
     name: 'Nome Completo',
     fieldValue: fullName,
     setFieldValue: setFullName,
+    placeholder: 'Qual seu nome?',
+    placeholderClass: fullName === '' ? 'placeholderSpan' : 'placeholderSpanFocus  signupPlaceholder',
   };
 
   const emailProps = {
@@ -38,6 +42,8 @@ const SignUp = () => {
     fieldValue: email,
     setFieldValue: setEmail,
     type: "email",
+    placeholder: 'Digite seu email',
+    placeholderClass: email === '' ? 'placeholderSpan' : 'placeholderSpanFocus signupPlaceholder',
   };
 
   const passwordInputProps = {
@@ -46,6 +52,8 @@ const SignUp = () => {
     fieldValue: passwordInput,
     setFieldValue: setPasswordInput,
     type: "password",
+    placeholder: 'Escolha sua senha',
+    placeholderClass: passwordInput === '' ? 'placeholderSpan' : 'placeholderSpanFocus signupPlaceholder',
   };
 
   const confirmPasswordProps = {
@@ -54,6 +62,8 @@ const SignUp = () => {
     fieldValue: confirmPassword,
     setFieldValue: setConfirmPassword,
     type: "password",
+    placeholder: 'Confirme sua senha',
+    placeholderClass: confirmPassword === '' ? 'placeholderSpan' : 'placeholderSpanFocus signupPlaceholder',
   };
 
   const signUpButtonProps = {
@@ -63,43 +73,55 @@ const SignUp = () => {
       setGoToMain(true);
     },
     disabled: disableSignUp,
+    className: 'mix-left-form-submit',
   };
 
-  const alreadySingnedUp = <pre className="noAccount">
+  const alreadySingnedUp = <pre id="navsignup" className="nav-link">
     Já possui um cadastro? <Link to="/">Login</Link>
   </pre>;
 
-  const nameWarning = <div className="warningText warningPadding">
+  const nameWarning = <div className="warningText">
   O nome deve conter apenas letras!
   </div>;
 
-  const emailWarning = <div className="warningText warningPadding">
+  const emailWarning = <div className="warningText">
   O email deve ter o formato correto.
   </div>;
 
-  const passwordLengthWarning = <div className="warningText warningPadding">
+  const passwordLengthWarning = <div className="warningText">
   A senha deve ter pelo menos oito caracteres.
   </div>;
 
-  const differentPasswordsWarning = <div className="warningText warningPadding">
+  const differentPasswordsWarning = <div className="warningText">
   As senhas devem ser iguais.
   </div>;
 
   if(goToMain) return <Navigate to="/main" />;
 
   return(
-    <div>
-      <h1>Cadastre-se</h1>
-      <Input {...nameProps} />
-      {(!validateUserName(fullName) && fullName !== '') && nameWarning}
-      <Input {...emailProps} />
-      {(!emailValidator(email) && email !== '') && emailWarning}
-      <Input {...passwordInputProps} />
-      {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
-      <Input {...confirmPasswordProps} />
-      {!passwordMatcher(passwordInput, confirmPassword) && differentPasswordsWarning}
-      <div>{alreadySingnedUp}</div>
-      <Button {...signUpButtonProps} />
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <img className="backgroundImage" src={SignupImage} alt="Background" />
+      <div className="leftSideForm">
+        <h1 id="signup-title">Crie sua conta</h1>
+        <div className="halfScreenWidth">
+          <Input {...nameProps} />
+          {(!validateUserName(fullName) && fullName !== '') && nameWarning}
+        </div>
+        <div className="halfScreenWidth">
+          <Input {...emailProps} />
+          {(!emailValidator(email) && email !== '') && emailWarning}
+        </div>
+        <div className="halfScreenWidth">
+          <Input {...passwordInputProps} />
+          {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
+        </div>
+        <div className="halfScreenWidth">
+          <Input {...confirmPasswordProps} />
+          {!passwordMatcher(passwordInput, confirmPassword) && differentPasswordsWarning}
+        </div>
+        <div>{alreadySingnedUp}</div>
+        <Button {...signUpButtonProps} />
+      </div>
     </div>
   )
 };

@@ -1,0 +1,268 @@
+input {
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 30px;
+  outline: none;
+  margin-top: 20px;
+}
+
+button {
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  background-color: rgb(216, 124, 3);
+}
+
+button:disabled {
+  background-color: #fed348;
+}
+
+input:focus {
+  font-size: 1.5em;
+  color: #3a4041;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+label {
+  position: relative;
+  width: 100%;
+}
+
+label .placeholderSpan {
+  position: absolute;
+  left: 45px;
+  top: 10px;
+  transform: translateY(-50%);
+  width: '50%';
+  padding: 0 5px;
+  border-radius: 8px;
+}
+
+.loginInput input {
+  background-color: #c7c7c7;
+  border-color: #6b7677;
+  width: 100%;
+  height: 40px;
+}
+
+.warningText {
+  color: red;
+  font-weight: 700;
+  width: auto;
+  font-size: 20px;
+  position: relative;
+  top: -15px;
+  background-color: #fdcf6a;
+  opacity: 0.6;
+  text-align: center;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  margin-left: 50px;
+  border: 1px solid #6b7677 ;
+}
+
+.placeholderSpan {
+  font-size: 14px;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  color: grey;
+}
+
+.loginInputContainer {
+  width: 80%;
+  margin-left: 7%;
+}
+
+.halfScreenWidth input {
+  width: 100%;
+  height: 40px;
+}
+
+.mix-left-form-submit {
+  width: 50%;
+  align-self: center;
+}
+
+.nav-link {
+  background-color: gray;
+  width: 300px;
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.placeholderSpanFocus {
+  top: -110px;
+  border-radius: 5px;
+  padding: 4px;
+  font-weight: 500;
+  position: relative;
+  color: black;
+  background-color: #cdcdcd;
+  font-size: 12px;
+  border: #202324 solid 2px;
+}
+
+.loginPlaceholder {
+  left: 50px;
+}
+
+.signupPlaceholder {
+  left: -285px;
+}
+
+.gamePlaceholder {
+  left: -250px;
+}
+
+#loginNav {
+  margin-left: 30%;
+}
+
+#navsignup {
+  margin-left: 27%;
+}
+
+#mix-cadastrar {
+  align-self: center;
+  padding: 10px 100px
+}
+
+#welcome {
+  font-size: 5em;
+  text-align: center;
+  color: black;
+}
+
+.leftSideForm {
+  position: absolute;
+  background: transparent;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  top: 0;
+  height: 100%;
+  margin-left: 30px;
+  width: 40%;
+}
+
+.gameCardContainer {
+  height: 600px;
+  width: 300px;
+  background: #FCFCFC;
+  border: gray solid 2px;
+  border-radius: 20px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(-2px -2px 4px rgba(0, 0, 0, 0.1));
+  margin: 10px;
+}
+
+.gameImage {
+  width: 300px;
+  height: 190px;
+  border-radius: 10px 10px 0 0;
+}
+
+.gameCardContainer button {
+  position: fixed;
+  bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.gameCardContainer h1 {
+  text-align: center;
+}
+
+.gameName {
+  padding: 0 0 10px 10px;
+}
+
+table, th, td {
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+}
+
+th {
+  font-size: 2em;
+}
+
+#checkoutContainer {
+  background-image: url('../images/CheckoutBackground.png');
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  font-weight: 800;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#tableContainer {
+  width: 100%;
+}
+
+#mix-back-to-shopping {
+  margin-left: 17%;
+}
+
+#login-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  margin-left: 40vw;
+  justify-content: space-around;
+  background: transparent;
+  height: 100vh;
+  position: absolute;
+}
+
+#mainPageContainer {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url('../images/MainPageBackground.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vw;
+  justify-content: center;
+}
+
+#mainPageHeader {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#mainPageHeader button {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#mainPageHeader h1 {
+  font-size: 3em;
+}
+
+#signup-title {
+  color: rgb(216, 124, 3);
+  font-size: 3.5em;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+}

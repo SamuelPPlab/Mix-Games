@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/styles.css';
 
-const Input = ({ name, fieldValue = null, id, className = null, placeholder = '', step=null,
+const Input = ({ fieldValue = null, id, className = null, placeholderClass, placeholder = '', step = null,
   setFieldValue = null, type = 'text', readOnly = false, style = null }) => {
 
   const inputProps = {
@@ -11,19 +12,15 @@ const Input = ({ name, fieldValue = null, id, className = null, placeholder = ''
     type: type,
     readOnly: readOnly,
     className,
-    placeholder,
     step,
+    autocomplete: 'off',
   };
 
   return (
-    <div>
-      <label style={style} htmlFor={id}>
-        {name}
-        <div>
-          <input {...inputProps} />
-        </div>
-      </label>
-    </div>
+    <label style={style} htmlFor={id}>
+      <input {...inputProps} />
+      <span className={placeholderClass}>{placeholder}</span>
+    </label>
   );
 };
 

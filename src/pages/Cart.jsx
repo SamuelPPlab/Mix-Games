@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Button from "../components/Button";
 import CheckoutTable from "../components/CheckoutTable";
 import { getLocalStorageKey } from "../services/getKey";
@@ -16,7 +16,7 @@ const Cart = () => {
   }, [products]);
 
   const backToShoppingProps = {
-    id: 'mix-back-to-shoppig',
+    id: 'mix-back-to-shopping',
     name: 'Voltar à loja',
     onClick: () => setGoToMain(true),
   };
@@ -25,16 +25,20 @@ const Cart = () => {
   if(goToMain) return <Navigate to="/main" />;
 
   return(
-    <div>
-      {
-        products.length > 0 && <CheckoutTable products={products} setProducts={setProducts} />
-      }
+    <div id="checkoutContainer">
+      <div>
+        <div>
+        {
+          products.length > 0 && <CheckoutTable products={products} setProducts={setProducts} />
+        }
+      </div>
       {
         products.length === 0 && <div>
           <h1>Não há produtos no seu carrinho</h1>
-          <Button {...backToShoppingProps} />
         </div>
       }
+      <Button {...backToShoppingProps} />
+      </div>
     </div>
   );
 };
