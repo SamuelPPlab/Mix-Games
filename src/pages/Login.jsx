@@ -3,6 +3,7 @@ import { Navigate, Link } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator } from '../services/validators';
+import LoginImage from '../images/LoginImage.jpg';
 import '../css/styles.css';
 
 const Login = () => {
@@ -58,19 +59,22 @@ const Login = () => {
   if(redirect) return <Navigate to="/main" />;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '50vw', justifyContent: 'space-around', background: '#cdcdcd', height: '100vh' }}>
-      <h1 id="welcome">Seja bem-vindo!</h1>
-      <div className='loginInputContainer'>
-        <Input {...emailInputProps} />
-        {(!emailValidator(email) && email !== '') && emailWarning}
+    <div style={{ display: 'flex', height: '100vh' }}>
+      <img id="loginImage" src={LoginImage} alt="Prophet do Crysis 2" />
+      <div style={{ display: 'flex', flexDirection: 'column', width: '50vw', justifyContent: 'space-around', background: 'transparent', height: '100vh', marginLeft: '42vw', position: 'absolute' }}>
+        <h1 id="welcome">Mix Games</h1>
+        <div className='loginInputContainer'>
+          <Input {...emailInputProps} />
+          {(!emailValidator(email) && email !== '') && emailWarning}
+        </div>
+        <div className='loginInputContainer'>
+          <Input {...passwordInputProps} />
+          {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
+        </div>
+        {notRegistered && notRegisteredWarning}
+        <Button {...loginButtonProps} />
+        {noAccount}
       </div>
-      <div className='loginInputContainer'>
-        <Input {...passwordInputProps} />
-        {(!passwordLengthValidator(passwordInput) && passwordInput !== '') && passwordLengthWarning}
-      </div>
-      {notRegistered && notRegisteredWarning}
-      <Button {...loginButtonProps} />
-      {noAccount}
     </div>
   );
 };
