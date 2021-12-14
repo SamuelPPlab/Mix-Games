@@ -9,7 +9,7 @@ input {
   outline: none;
   margin-top: 20px;
   background-color: #cdcdcd;
-  border-color: #fdc60f;
+  border-color: #6b7677;
   width: 100%;
   height: 40px;
 }
@@ -55,4 +55,5 @@ label input:focus + .placeholderSpan {
 #welcome {
   font-size: 5em;
   text-align: center;
+  color: #352f1f;
 }
