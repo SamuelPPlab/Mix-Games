@@ -44,7 +44,7 @@ const Login = () => {
 
   const loginButtonProps = {
     name: "Entrar",
-    id: "mix-submitLogin",
+    id: "mix-submit-login",
     onClick: () => {
       return setRedirect(true);
     },
