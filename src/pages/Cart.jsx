@@ -21,8 +21,8 @@ const Cart = () => {
     onClick: () => setGoToMain(true),
   };
 
-  if(!products) return <div>Loading</div>;
-  if(goToMain) return <Navigate to="/main" />;
+  if (!products) return <div>Loading</div>;
+  if (goToMain) return <Navigate to="/main" />;
 
   return(
     <div id="checkoutContainer">
