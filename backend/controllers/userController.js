@@ -24,9 +24,10 @@ UserController.post('/create', async (req, res) => {
   }
 
   const { insertedId } = await createUser(name, email, password);
-  const userContainer = { user: { _id: insertedId, name, email, password } };
+  const user = { id: insertedId, name, email, password };
+  const token = tokenCreator(user);
 
-  return res.status(CREATED).json(userContainer);
+  return res.status(CREATED).json({ token });
 });
 
 UserController.post('/login', async (req, res) => {
