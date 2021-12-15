@@ -34,10 +34,12 @@ const Cart = () => {
       </div>
       {
         products.length === 0 && <div>
-          <h1>Não há produtos no seu carrinho</h1>
+          <h1 style={{ textAlign: 'center', marginLeft: '10%' }}>Não há produtos no seu carrinho</h1>
         </div>
       }
-      <Button {...backToShoppingProps} />
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
+        <Button {...backToShoppingProps} />
+      </div>
       </div>
     </div>
   );

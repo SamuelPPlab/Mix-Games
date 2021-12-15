@@ -208,6 +208,7 @@ th {
   font-weight: 800;
   display: flex;
   justify-content: flex-start;
+  text-align: center;
 }
 
 #tableContainer {
@@ -215,7 +216,7 @@ th {
 }
 
 #mix-back-to-shopping {
-  margin-left: 17%;
+  margin-left: 115px;
 }
 
 #login-form-container {

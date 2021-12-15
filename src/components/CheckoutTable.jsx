@@ -33,8 +33,8 @@ const CheckoutTable = ({ products, setProducts }) => {
   if(goToMain) return <Navigate to="/main" />;
 
   return(
-    <div id="tableContainer">
-      <table>
+    <div id="tableContainer">      
+      <table style={{ width: '60vw' }}>
         <thead>
           <tr>
             <th className="tableHeading">Produto</th>
@@ -55,10 +55,10 @@ const CheckoutTable = ({ products, setProducts }) => {
         </tbody>
       </table>
       <div>
-        <h3 style={{ position: 'relative', left: '430px', fontSize: '2em',  }}>Total: R$ {`${total[0]},${total[1]}`}</h3>
-        <div style={{ width: '60%', display: 'flex', justifyContent: 'space-evenly' }}>
-          <Button {...buyButonProps} onClick={handlePurchaseClick} />
-        </div>
+        <h3 style={{ position: 'relative', textAlign: 'end', fontSize: '2em', width: '50vw' }}>Total: R$ {`${total[0]},${total[1]}`}</h3>
+      </div>
+      <div style={{ width: '60%', display: 'flex', marginTop: '40px', marginLeft: '140px' }}>
+        <Button {...buyButonProps} onClick={handlePurchaseClick} />
       </div>
     </div>
   );
