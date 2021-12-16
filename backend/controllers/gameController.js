@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { BAD_REQUEST } = require('../services/httpStatuses');
-const { invalidEntries } = require('../services/messages');
+const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound } = require('../services/messages');
 const { fieldFinder } = require('../services/validators');
 
 const GameController = new Router();
@@ -12,6 +12,22 @@ GameController.post('/create', async (req, res) => {
 
   if (!doRequiredFieldsExist) {
     return res.status(BAD_REQUEST).json(invalidEntries);
+  }
+
+  if (gameName === '') {
+    return res.status(BAD_REQUEST).json(noGameName);
+  }
+
+  if (image === '') {
+    return res.status(BAD_REQUEST).json(noImageFound);
+  }
+
+  if (quantity === '0') {
+    return res.status(BAD_REQUEST).json(mustHaveStock);
+  }
+
+  if (price === '0') {
+    return res.status(BAD_REQUEST).json(noFreeGame);
   }
 });
 
