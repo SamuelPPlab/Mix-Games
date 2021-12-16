@@ -8,6 +8,13 @@ const addGame = ({ gameName, price, quantity, image }) => (
   ))
 );
 
+const findGameByName = ({ gameName }) => (
+  connection().then((db) => (
+    db.collection(collection).find({ gameName })
+  ))
+);
+
 module.exports = {
   addGame,
+  findGameByName,
 };
