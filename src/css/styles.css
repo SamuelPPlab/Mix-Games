@@ -144,6 +144,7 @@ label .placeholderSpan {
   font-size: 5em;
   text-align: center;
   color: black;
+  text-shadow: 2px 2px #727272;
 }
 
 .leftSideForm {
@@ -165,14 +166,16 @@ label .placeholderSpan {
   background: #FCFCFC;
   border: gray solid 2px;
   border-radius: 20px;
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(-2px -2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(-2px -2px 4px rgba(255,132,0,1));
   margin: 10px;
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(103,100,100,1) 43%, rgba(255,132,0,1) 100%);
 }
 
 .gameImage {
   width: 300px;
   height: 190px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 20px 20px 0 0;
 }
 
 .gameCardContainer button {

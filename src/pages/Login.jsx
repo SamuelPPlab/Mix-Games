@@ -6,7 +6,6 @@ import { emailValidator, passwordLengthValidator } from '../services/validators'
 import LoginImage from '../images/LoginImage.jpg';
 import '../css/styles.css';
 import { login } from '../apiIntegration/api';
-import { getLocalStorageKey } from '../services/getKey';
 
 const Login = () => {
 
