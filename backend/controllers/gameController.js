@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { addGame, findGameByName } = require('../models/gameModel');
+const { addGame, findGameByName, getAllGames } = require('../models/gameModel');
 const { BAD_REQUEST, SUCCESS, CONFLICT } = require('../services/httpStatuses');
 const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound, gameAlreadyRegistered } = require('../services/messages');
 const { fieldFinder } = require('../services/validators');
@@ -40,6 +40,11 @@ GameController.post('/create', async (req, res) => {
   }
   
   return res.status(CONFLICT).json(gameAlreadyRegistered);
+});
+
+GameController.get('/all', async (req, res) => {
+  const allGames = await getAllGames();
+  return res.status(SUCCESS).json(allGames);
 });
 
 module.exports = {
