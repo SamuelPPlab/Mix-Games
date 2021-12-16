@@ -45,7 +45,6 @@ GameController.post('/create', tokenVerifier, async (req, res) => {
 
 GameController.post('/checkout', async (req, res) => {
   const games = req.body;
-
   if (!games) {
     return res.status(BAD_REQUEST).json(noGamesToSubtract);
   }

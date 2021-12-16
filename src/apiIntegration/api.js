@@ -21,12 +21,13 @@ export const fetchAllGames = () => {
   }).then((r) => (r.json()));
 };
 
-export const buy = (buyList) => {
+export const buyGames = (buyList) => {
   const URL = 'http://localhost:3001/games/checkout';
 
   const token = JSON.parse(localStorage.getItem('mix-token'));
 
   return fetch(URL, {
+    method: 'POST',
     headers: {
       authorization: token,
       'Content-Type': 'application/json',
