@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator, passwordMatcher, validateUserName } from "../services/validators";
 import SignupImage from '../images/SignupImage.jpg';
 import '../css/styles.css';
+import { postUser } from "../apiIntegration/api";
 
 const SignUp = () => {
 
@@ -70,7 +71,7 @@ const SignUp = () => {
     id: "mix-cadastrar",
     name: "Cadastrar",
     onClick: () => {
-      setGoToMain(true);
+      postUser(fullName, email, passwordInput);
     },
     disabled: disableSignUp,
     className: 'mix-left-form-submit',
