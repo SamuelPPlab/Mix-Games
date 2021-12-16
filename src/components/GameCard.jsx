@@ -15,7 +15,7 @@ const GameCard = ({ data }) => {
     if(isItemInCart) {
       setGameInCart(true);
     }
-  }, [isGameInCart]);
+  }, [isGameInCart, gameName]);
 
   const addToCartButtonProps = {
     name: 'Adicionar ao carrinho',

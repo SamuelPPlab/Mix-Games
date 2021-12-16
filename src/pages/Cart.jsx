@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Button from "../components/Button";
 import CheckoutTable from "../components/CheckoutTable";
 import { getLocalStorageKey } from "../services/getKey";

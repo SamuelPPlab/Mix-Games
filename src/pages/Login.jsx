@@ -12,7 +12,6 @@ const Login = () => {
   const [passwordInput, setPasswordInput] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const [redirect, setRedirect] = useState(false);
-  const [isUserRegistered, setIsUserRegistered] = useState(false);
   const [notRegistered, setNotRegistered] = useState(false);
 
   useEffect(() => {

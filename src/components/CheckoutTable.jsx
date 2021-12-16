@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { removeGameFromCart } from "../services/localstorage";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import '../css/styles.css';
 
 const CheckoutTable = ({ products, setProducts }) => {

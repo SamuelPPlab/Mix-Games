@@ -10,13 +10,13 @@ export const postUser = (userName, email, password) => {
   return fetch(URL, options).then((r) => r);
 };
 
-export const fetchAllGames = () => {
+export const fetchAllGames = async () => {
   const URL = 'http://localhost:3001/games/all';
 
-  const token = JSON.parse(localStorage.getItem('mix-token'));
+  const token = JSON.parse(localStorage.getItem('mix-tokenm'));
 
-  const allGames = fetch(URL, { headers: {
+  const allGames = await fetch(URL, { headers: {
     authorization: token,
-  } }).then((r) => r.json());
+  } }).then((r) => (r.json()));
   return allGames;
 };
