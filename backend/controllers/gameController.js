@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const tokenVerifier = require('../auth/authenticationMiddleware');
 const { addGame, findGameByName, getAllGames, subtractFromStock } = require('../models/gameModel');
 const { BAD_REQUEST, SUCCESS, CONFLICT } = require('../services/httpStatuses');
 const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound, gameAlreadyRegistered, noGamesToSubtract } = require('../services/messages');
@@ -54,7 +55,7 @@ GameController.post('/checkout', async (req, res) => {
   return res.status(SUCCESS).json();
 });
 
-GameController.get('/all', async (_req, res) => {
+GameController.get('/all', tokenVerifier, async (_req, res) => {
   const allGames = await getAllGames();
   return res.status(SUCCESS).json(allGames);
 });

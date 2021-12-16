@@ -7,10 +7,8 @@ const MainPage = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    fetchAllGames().then((r) => setGames(r));
+    fetchAllGames().then((r) => console.log(r));
   }, []);
-
-  if(!games) return <div>loading</div>;
 
   if(games.length === 0) return <h1>Não há itens no estoque.</h1>;
 
