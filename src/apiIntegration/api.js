@@ -4,7 +4,7 @@ export const postUser = (userName, email, password) => {
     method: 'POST',
     body: JSON.stringify({ userName, email, password }),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
   };
   return fetch(URL, options).then((r) => r);

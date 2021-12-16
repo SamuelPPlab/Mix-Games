@@ -9,7 +9,7 @@ const UserController = new Router();
 
 UserController.post('/create', async (req, res) => {
   const { email, password, userName } = req.body;
-  const requiredFields = ['name', 'password', 'email'];
+  const requiredFields = ['userName', 'password', 'email'];
   const doRequiredFieldsExist = fieldFinder(req.body, requiredFields);
   const isEmailValid = emailValidator(email);
 
