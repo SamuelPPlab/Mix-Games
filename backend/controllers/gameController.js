@@ -57,7 +57,7 @@ GameController.post('/checkout', async (req, res) => {
 
 GameController.get('/all', tokenVerifier, async (_req, res) => {
   const allGames = await getAllGames();
-  return res.status(SUCCESS).json(allGames);
+  return res.status(SUCCESS).json({ games: allGames });
 });
 
 module.exports = {

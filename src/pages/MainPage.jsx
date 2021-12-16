@@ -9,12 +9,19 @@ const MainPage = () => {
   const [backToLogin, setBackToLogin] = useState(false);
 
   useEffect(() => {
-    fetchAllGames().then((r) => setResponse(r));
     
+    if(!response) {
+      fetchAllGames().then((r) => setResponse(r));
+    }
+
     if(response.message) {
       return setBackToLogin(true);
     }
-    
+  
+    if(response.games) {
+      return setGames(response.games);
+    }
+
   }, [response]);
 
   if(backToLogin) {
