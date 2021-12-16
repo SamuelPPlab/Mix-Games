@@ -236,13 +236,14 @@ th {
   flex-wrap: wrap;
   background-image: url('../images/MainPageBackground.jpg');
   background-repeat: no-repeat;
+  background-size: 100%;
   background-attachment: fixed;
   width: 100vw;
   max-width: 100vw;
   justify-content: center;
 }
 
-#mainPageContainer::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -263,9 +264,10 @@ th {
   font-size: 3em;
 }
 
-#signup-title {
+.orange-title {
   color: rgb(216, 124, 3);
   font-size: 3.5em;
+  text-shadow: 2px 2px #727272;
 }
 
 .backgroundImage {

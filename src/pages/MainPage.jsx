@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { fetchAllGames } from "../apiIntegration/api";
 import GameCard from "../components/GameCard";
+import '../css/styles.css';
 
 const MainPage = () => {
   const [games, setGames] = useState([]);
@@ -36,7 +37,7 @@ const MainPage = () => {
         <Link to="/register-game">
           <button id="mix-register-game">Registrar um jogo</button>
         </Link>
-        <h1>Veja nossos jogos: </h1>
+        <h1 className="orange-title">Veja nossos jogos: </h1>
         <Link to="/checkout">
           <button id='mix-go-to-checkout'>Ver carrinho</button>
         </Link>

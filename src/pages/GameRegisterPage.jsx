@@ -108,7 +108,7 @@ const GameRegisterPage = () => {
     <div style={{ width: '100vw', height: '100vh' }}>
       <img src={RegisterGameBackground} alt="Background" className="backgroundImage" />
       <div className="leftSideForm">
-        <h1 style={{ fontSize: '3em' }}>Registre seu game</h1>
+        <h1 className="orange-title">Registre seu game</h1>
         <div className="halfScreenWidth">
           <Input {...gameNameProps} />
           {gameName === '' && noEmptyNameWarning}

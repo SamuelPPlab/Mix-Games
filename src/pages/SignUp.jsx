@@ -117,7 +117,7 @@ const SignUp = () => {
     <div style={{ width: '100vw', height: '100vh' }}>
       <img className="backgroundImage" src={SignupImage} alt="Background" />
       <div className="leftSideForm">
-        <h1 id="signup-title">Crie sua conta</h1>
+        <h1 className="orange-title">Crie sua conta</h1>
         <div className="halfScreenWidth">
           <Input {...nameProps} />
           {(!validateUserName(fullName) && fullName !== '') && nameWarning}
