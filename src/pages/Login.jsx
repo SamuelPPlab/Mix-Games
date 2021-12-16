@@ -5,6 +5,8 @@ import Button from '../components/Button';
 import { emailValidator, passwordLengthValidator } from '../services/validators';
 import LoginImage from '../images/LoginImage.jpg';
 import '../css/styles.css';
+import { login } from '../apiIntegration/api';
+import { getLocalStorageKey } from '../services/getKey';
 
 const Login = () => {
 
@@ -12,6 +14,8 @@ const Login = () => {
   const [passwordInput, setPasswordInput] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const [redirect, setRedirect] = useState(false);
+  const [notRegistered, setNotRegistered] = useState(false);
+  const [response, setResponse] = useState(false);
 
   useEffect(() => {
     const isEmailValid = emailValidator(email);
@@ -22,6 +26,16 @@ const Login = () => {
     return setIsDisabled(true);
   }, [email, passwordInput]);
 
+  useEffect(() => {
+    if (response.token) {
+      localStorage.setItem('mixToken', JSON.stringify(response.token));
+      return setRedirect(true);
+    }
+
+    if (response.message) {
+      return setNotRegistered(true);
+    }
+  }, [response]);
 
   const emailInputProps = {
     id: "mix-email",
@@ -47,7 +61,7 @@ const Login = () => {
     name: "Entrar",
     id: "mix-submit-login",
     onClick: () => {
-      return setRedirect(true);
+      login(email, passwordInput).then((r) => setResponse(r));
     },
     disabled:  isDisabled,
     className: 'mix-left-form-submit',
