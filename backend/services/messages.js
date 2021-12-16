@@ -58,7 +58,12 @@ const gameAlreadyRegistered = {
   message: 'Esse jogo já está registrado.',
 };
 
+const noGamesToSubtract = {
+  message: 'Você tem que enviar pelo menos um jogo para ter o estoque subtraído.',
+};
+
 module.exports = {
+  noGamesToSubtract,
   gameAlreadyRegistered,
   noImageFound,
   noFreeGame,
