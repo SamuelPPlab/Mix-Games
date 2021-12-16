@@ -17,8 +17,22 @@ export const fetchAllGames = () => {
   return fetch(URL, {
     headers: {
       authorization: token,
-    }
+    },
   }).then((r) => (r.json()));
+};
+
+export const buy = (buyList) => {
+  const URL = 'http://localhost:3001/games/checkout';
+
+  const token = JSON.parse(localStorage.getItem('mix-token'));
+
+  return fetch(URL, {
+    headers: {
+      authorization: token,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(buyList),
+  });
 };
 
 export const postGame = (gameName, price, quantity, image) => {
