@@ -4,13 +4,13 @@ import Button from "./Button";
 import '../css/styles.css';
 
 const GameCard = ({ data }) => {
-  const { game, image, price, stock } = data;
+  const { gameName, image, price, quantity } = data;
 
   const [isGameInCart, setGameInCart] = useState(false);
 
   useEffect(() => {
     const checkout = getLocalStorageKey('mixCheckout');
-    const isItemInCart = checkout.find((item) => item.game === game);
+    const isItemInCart = checkout.find((item) => item.gameName === gameName);
 
     if(isItemInCart) {
       setGameInCart(true);
@@ -32,8 +32,8 @@ const GameCard = ({ data }) => {
     <div className="gameCardContainer">
       <img src={image} alt="Capa do jogo." className="gameImage"/>
       <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'space-between' }}>
-        <h1>{game}</h1>
-        <p>Quantidade em estoque: {stock};</p>
+        <h1>{gameName}</h1>
+        <p>Quantidade em estoque: {quantity};</p>
         <h3>R$: {parseFloat(price).toFixed(2)};</h3>
       </div>
       <Button {...addToCartButtonProps} />

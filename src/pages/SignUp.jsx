@@ -76,6 +76,8 @@ const SignUp = () => {
       const { message } = await response.json();
       return setRMessage(message);
     }
+    const { token } = await response.json();
+    localStorage.setItem('mix-token', JSON.stringify(token));
     return setGoToMain(true);
   }
 

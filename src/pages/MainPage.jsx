@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { fetchAllGames } from "../apiIntegration/api";
 import GameCard from "../components/GameCard";
-import { getLocalStorageKey } from "../services/getKey";
-import MainPageBackground from '../images/MainPageBackground.jpg';
 
 const MainPage = () => {
   const [games, setGames] = useState([]);
-  
+
   useEffect(() => {
-    setGames(getLocalStorageKey('gameStock'));
+    fetchAllGames().then((r) => setGames(r));
   }, []);
 
   if(!games) return <div>loading</div>;
