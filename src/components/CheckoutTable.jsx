@@ -3,6 +3,7 @@ import Button from "./Button";
 import { removeGameFromCart } from "../services/localstorage";
 import { Navigate } from "react-router-dom";
 import '../css/styles.css';
+import { getLocalStorageKey } from "../services/getKey";
 
 const CheckoutTable = ({ products, setProducts }) => {
   const [goToMain, setGoToMain] = useState(false);
@@ -23,8 +24,9 @@ const CheckoutTable = ({ products, setProducts }) => {
   };
 
   const handlePurchaseClick = () => {
-    setGoToMain(true);
-    localStorage.setItem('mixCheckout', '[]');
+    let cartItems = getLocalStorageKey('mixCheckout');
+    cartItems = cartItems.map(({ gameName, quantity }) => ({ gameName, quantity }));
+
   };
 
   let total = products.reduce((a, { price }) => (a + parseFloat(price)), 0).toFixed(2);
