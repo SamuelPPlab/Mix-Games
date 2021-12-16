@@ -13,8 +13,8 @@ export const saveGameData = (game, price, stock, image) => {
   localStorage.setItem('gameStock', JSON.stringify([...productsInStock, newGame]))
 };
 
-export const removeGameFromCart = (game) => {
+export const removeGameFromCart = (gameName) => {
   let itemsOnCart = getLocalStorageKey('mixCheckout');
-  itemsOnCart = itemsOnCart.filter((item) => (item.game !== game));
+  itemsOnCart = itemsOnCart.filter((item) => (item.gameName !== gameName));
   localStorage.setItem('mixCheckout', JSON.stringify(itemsOnCart));
 };
