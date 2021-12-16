@@ -1,13 +1,13 @@
 const { Router } = require('express');
 const tokenVerifier = require('../auth/authenticationMiddleware');
 const { addGame, findGameByName, getAllGames, subtractFromStock } = require('../models/gameModel');
-const { BAD_REQUEST, SUCCESS, CONFLICT } = require('../services/httpStatuses');
-const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound, gameAlreadyRegistered, noGamesToSubtract } = require('../services/messages');
+const { BAD_REQUEST, SUCCESS, CONFLICT, CREATED } = require('../services/httpStatuses');
+const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound, gameAlreadyRegistered, noGamesToSubtract, gameRegistered } = require('../services/messages');
 const { fieldFinder } = require('../services/validators');
 
 const GameController = new Router();
 
-GameController.post('/create', async (req, res) => {
+GameController.post('/create', tokenVerifier, async (req, res) => {
   const { gameName, quantity, price, image } = req.body;
   const requiredFields = ['gameName', 'quantity', 'price', 'image'];
   const doRequiredFieldsExist = fieldFinder(req.body, requiredFields);
@@ -37,7 +37,7 @@ GameController.post('/create', async (req, res) => {
   if (!isGameRegistered) {
     await addGame({ gameName, quantity, price, image });
   
-    return res.status(SUCCESS).json();
+    return res.status(CREATED).json(gameRegistered);
   }
   
   return res.status(CONFLICT).json(gameAlreadyRegistered);

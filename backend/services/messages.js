@@ -15,15 +15,11 @@ const wrongPassword = {
 };
 
 const invalidToken = {
-  message: 'jwt malformed',
+  message: 'Token inválido!',
 };
 
 const recipeNotFound = {
   message: 'recipe not found',
-};
-
-const noToken = {
-  message: 'missing auth token',
 };
 
 const notYours = {
@@ -62,7 +58,10 @@ const noGamesToSubtract = {
   message: 'Você tem que enviar pelo menos um jogo para ter o estoque subtraído.',
 };
 
+const gameRegistered = { message: 'Jogo registrado.' };
+
 module.exports = {
+  gameRegistered,
   noGamesToSubtract,
   gameAlreadyRegistered,
   noImageFound,
@@ -75,7 +74,6 @@ module.exports = {
   emailAlreadyExists,
   invalidToken,
   recipeNotFound,
-  noToken,
   mustFillAllFields,
   notYours,
   adminCreatesAdmin,
