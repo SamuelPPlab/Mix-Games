@@ -15,12 +15,14 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [goToMain, setGoToMain] = useState(false);
   const [disableSignUp, setDisableSignUp] = useState(true);
+  const [Rmessage, setRMessage] = useState('');
 
   useEffect(() => {
     const isUsernameValid = validateUserName(fullName);
     const isEmailValid = emailValidator(email);
     const isPasswordValid = passwordLengthValidator(passwordInput);
     const doPasswordsMatch = passwordMatcher(passwordInput, confirmPassword);
+
     if(isEmailValid && isUsernameValid && isPasswordValid && doPasswordsMatch) {
       return setDisableSignUp(false);
     }
@@ -67,11 +69,21 @@ const SignUp = () => {
     placeholderClass: confirmPassword === '' ? 'placeholderSpan' : 'placeholderSpanFocus signupPlaceholder',
   };
 
+  const handleClick = async () => {
+    const response = await postUser(fullName, email, passwordInput);
+    const created = 201;
+    if (response.status !== created) {
+      const { message } = await response.json();
+      return setRMessage(message);
+    }
+    return setGoToMain(true);
+  }
+
   const signUpButtonProps = {
     id: "mix-cadastrar",
     name: "Cadastrar",
     onClick: () => {
-      postUser(fullName, email, passwordInput);
+      handleClick()
     },
     disabled: disableSignUp,
     className: 'mix-left-form-submit',
@@ -120,6 +132,7 @@ const SignUp = () => {
           <Input {...confirmPasswordProps} />
           {!passwordMatcher(passwordInput, confirmPassword) && differentPasswordsWarning}
         </div>
+        {Rmessage !== '' && <div className="warningText">{JSON.stringify(Rmessage)}</div>}
         <div>{alreadySingnedUp}</div>
         <Button {...signUpButtonProps} />
       </div>
