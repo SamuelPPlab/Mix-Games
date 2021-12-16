@@ -12,9 +12,9 @@ const CheckoutTable = ({ products, setProducts }) => {
     id: 'mix-remove-game',
   };
 
-  const handleRemoveClick = (game) => {
-    removeGameFromCart(game);
-    setProducts(products.filter((item) => item.game !== game));
+  const handleRemoveClick = (gameName) => {
+    removeGameFromCart(gameName);
+    setProducts(products.filter((item) => item.gameName !== gameName));
   };
 
   const buyButonProps = {
@@ -44,11 +44,11 @@ const CheckoutTable = ({ products, setProducts }) => {
         </thead>
         <tbody>
           {
-            products.map(({game, price}) => (
-              <tr key={game}>
-                <td>{game}</td>
+            products.map(({gameName, price}) => (
+              <tr key={gameName}>
+                <td>{gameName}</td>
                 <td>R$ {parseFloat(price).toFixed(2)}</td>
-                <td><Button {...removeItemFromCart} onClick={() => handleRemoveClick(game)} /></td>
+                <td><Button {...removeItemFromCart} onClick={() => handleRemoveClick(gameName)} /></td>
               </tr>
             ))
           }

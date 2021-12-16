@@ -95,7 +95,9 @@ const GameRegisterPage = () => {
     className: 'mix-left-form-submit',
   };
 
-  if(redirect) return <Navigate to="/main" />;
+  if (redirect) return <Navigate to="/main" />;
+
+  if (backToLogin) return <Navigate to="/" />;
 
   const noEmptyNameWarning = <div className="warningText">O nome do jogo não pode estar vazio.</div>;
   const noFreeGameWarning = <div className="warningText">O seu jogo não vai ser vendido de graça.</div>;
