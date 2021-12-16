@@ -1,5 +1,6 @@
 const { Router } = require('express');
-const { BAD_REQUEST } = require('../services/httpStatuses');
+const { addGame } = require('../models/gameModel');
+const { BAD_REQUEST, SUCCESS } = require('../services/httpStatuses');
 const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound } = require('../services/messages');
 const { fieldFinder } = require('../services/validators');
 
@@ -29,6 +30,10 @@ GameController.post('/create', async (req, res) => {
   if (price === '0') {
     return res.status(BAD_REQUEST).json(noFreeGame);
   }
+  
+  await addGame({ gameName, quantity, price, image });
+  
+  return res.status(SUCCESS).json();
 });
 
 module.exports = {
