@@ -13,7 +13,7 @@ const Input = ({ fieldValue = null, id, className = null, placeholderClass, plac
     readOnly: readOnly,
     className,
     step,
-    autocomplete: 'off',
+    autoComplete: 'off',
   };
 
   return (

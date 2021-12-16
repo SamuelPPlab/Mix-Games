@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { fetchAllGames } from "../apiIntegration/api";
 import GameCard from "../components/GameCard";
-import { getLocalStorageKey } from "../services/getKey";
-import MainPageBackground from '../images/MainPageBackground.jpg';
 
 const MainPage = () => {
   const [games, setGames] = useState([]);
-  
-  useEffect(() => {
-    setGames(getLocalStorageKey('gameStock'));
-  }, []);
+  const [response, setResponse] = useState(false);
+  const [backToLogin, setBackToLogin] = useState(false);
 
-  if(!games) return <div>loading</div>;
+  useEffect(() => {
+    
+    if(!response) {
+      fetchAllGames().then((r) => setResponse(r));
+    }
+
+    if(response.message) {
+      return setBackToLogin(true);
+    }
+  
+    if(response.games) {
+      return setGames(response.games);
+    }
+
+  }, [response]);
+
+  if(backToLogin) {
+    return <Navigate to="/" />;
+  }
 
   if(games.length === 0) return <h1>Não há itens no estoque.</h1>;
 

@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { removeGameFromCart } from "../services/localstorage";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import '../css/styles.css';
+import { getLocalStorageKey } from "../services/getKey";
+import { buyGames } from "../apiIntegration/api";
 
 const CheckoutTable = ({ products, setProducts }) => {
-  const [goToMain, setGoToMain] = useState(false);
+  const [goToLogin, setGoToLogin] = useState(false);
+  const [responseMessage, setResponseMessage] = useState(false);
 
   const removeItemFromCart = {
     name: 'X',
     id: 'mix-remove-game',
   };
 
-  const handleRemoveClick = (game) => {
-    removeGameFromCart(game);
-    setProducts(products.filter((item) => item.game !== game));
+  const handleRemoveClick = (gameName) => {
+    removeGameFromCart(gameName);
+    setProducts(products.filter((item) => item.gameName !== gameName));
   };
 
   const buyButonProps = {
@@ -23,14 +26,22 @@ const CheckoutTable = ({ products, setProducts }) => {
   };
 
   const handlePurchaseClick = () => {
-    setGoToMain(true);
-    localStorage.setItem('mixCheckout', '[]');
+    let cartItems = getLocalStorageKey('mixCheckout');
+    cartItems = cartItems.map(({ gameName, quantity }) => ({ gameName, quantity }));
+
+    buyGames(cartItems).then((r) => setResponseMessage(r.message));
+
+    if (responseMessage === 'Jogos vendidos!') {
+      localStorage.setItem('mixCheckout', '[]');
+      localStorage.setItem('mixToken', '[]');
+      return setGoToLogin(true);
+    }
   };
 
   let total = products.reduce((a, { price }) => (a + parseFloat(price)), 0).toFixed(2);
   total = total.split('.');
 
-  if(goToMain) return <Navigate to="/main" />;
+  if(goToLogin) return <Navigate to="/" />;
 
   return(
     <div id="tableContainer">      
@@ -44,11 +55,11 @@ const CheckoutTable = ({ products, setProducts }) => {
         </thead>
         <tbody>
           {
-            products.map(({game, price}) => (
-              <tr key={game}>
-                <td>{game}</td>
+            products.map(({gameName, price}) => (
+              <tr key={gameName}>
+                <td>{gameName}</td>
                 <td>R$ {parseFloat(price).toFixed(2)}</td>
-                <td><Button {...removeItemFromCart} onClick={() => handleRemoveClick(game)} /></td>
+                <td><Button {...removeItemFromCart} onClick={() => handleRemoveClick(gameName)} /></td>
               </tr>
             ))
           }

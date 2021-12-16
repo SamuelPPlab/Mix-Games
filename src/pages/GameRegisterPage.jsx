@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import { saveGameData } from "../services/localstorage";
 import { gameNameValidation, numberValidation } from "../services/validators";
 import RegisterGameBackground from "../images/RegisterGameBackground.jpg";
+import { postGame } from "../apiIntegration/api";
 import '../css/styles.css';
 
 const GameRegisterPage = () => {
@@ -15,6 +15,9 @@ const GameRegisterPage = () => {
   const [gameIMG, setGameIMG] = useState('');
   const [allowGameRegister, setAllowGameRegister] = useState(false);
   const [redirect, setRedirect] = useState(false);
+  const [postResponse, setPostResponse] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState(false);
+  const [backToLogin, setBackToLogin] = useState(false);
 
   useEffect(() => {
     const isNameValid = gameNameValidation(gameName);
@@ -26,6 +29,20 @@ const GameRegisterPage = () => {
     }
     return setAllowGameRegister(false);
   }, [gamePrice, gameName, stockQuantity]);
+
+  useEffect(() => {
+    if (postResponse.message && postResponse.message === 'Jogo registrado.') {
+      return setRedirect(true);
+    }
+
+    if (postResponse.message && postResponse.message !== 'Token inválido!') {
+      return setFeedbackMessage(postResponse.message);
+    }
+
+    if (postResponse.message && postResponse.message === 'Token inválido!') {
+      return setBackToLogin(true);
+    }
+  }, [postResponse]);
 
   const gameNameProps = {
     id: 'mix-game-name',
@@ -70,14 +87,17 @@ const GameRegisterPage = () => {
     name: "Registrar Jogo",
     id: "mix-submitGame",
     onClick: () => {
-      saveGameData(gameName, gamePrice, stockQuantity, gameIMG);
-      setRedirect(true);
+      postGame(gameName, gamePrice, stockQuantity, gameIMG).then(
+        (r) => r.json()).then((r) => setPostResponse(r),
+      );
     },
     disabled: !allowGameRegister,
     className: 'mix-left-form-submit',
   };
 
-  if(redirect) return <Navigate to="/main" />;
+  if (redirect) return <Navigate to="/main" />;
+
+  if (backToLogin) return <Navigate to="/" />;
 
   const noEmptyNameWarning = <div className="warningText">O nome do jogo não pode estar vazio.</div>;
   const noFreeGameWarning = <div className="warningText">O seu jogo não vai ser vendido de graça.</div>;
@@ -105,6 +125,7 @@ const GameRegisterPage = () => {
           <Input {...gameImageProps} />
           {gameIMG === '' && addAnImageURL}
         </div>
+        {feedbackMessage && <div className="warningText">{JSON.stringify(feedbackMessage)}</div>}
         <Button {...submitGameProps} />
       </div>
     </div>

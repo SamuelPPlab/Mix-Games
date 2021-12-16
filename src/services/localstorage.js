@@ -3,9 +3,6 @@ import { getLocalStorageKey } from "./getKey";
 export const saveGameData = (game, price, stock, image) => {
   const productsInStock = getLocalStorageKey('gameStock');
 
-  let formattedPrice = parseFloat(price).toFixed(2);
-  formattedPrice = formattedPrice.split('.');
-
   const newGame = {
     game,
     price,

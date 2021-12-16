@@ -8,7 +8,7 @@ const tokenVerifier = (req, res, next) => {
   const isTokenValid = tokenValidator(token);
 
   if (!token || token === '') {
-    return res.status(UNATHORIZED).json(noToken);
+    return res.status(UNATHORIZED).json(invalidToken);
   }
 
   if (!isTokenValid) {
