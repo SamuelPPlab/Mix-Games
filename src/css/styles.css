@@ -238,6 +238,7 @@ th {
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: 100vw;
+  height: max-content;
   justify-content: center;
 }
 
