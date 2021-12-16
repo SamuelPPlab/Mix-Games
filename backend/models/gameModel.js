@@ -8,9 +8,9 @@ const addGame = ({ gameName, price, quantity, image }) => (
   ))
 );
 
-const findGameByName = ({ gameName }) => (
+const findGameByName = (gameName) => (
   connection().then((db) => (
-    db.collection(collection).find({ gameName })
+    db.collection(collection).findOne({ gameName })
   ))
 );
 

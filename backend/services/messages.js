@@ -52,9 +52,14 @@ const noFreeGame = {
 
 const noImageFound = {
   message: 'Digite o URL da imagem.',
-}
+};
+
+const gameAlreadyRegistered = {
+  message: 'Esse jogo já está registrado.',
+};
 
 module.exports = {
+  gameAlreadyRegistered,
   noImageFound,
   noFreeGame,
   mustHaveStock,
