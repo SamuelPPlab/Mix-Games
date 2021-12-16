@@ -2,7 +2,7 @@ const { Router } = require('express');
 const tokenVerifier = require('../auth/authenticationMiddleware');
 const { addGame, findGameByName, getAllGames, subtractFromStock } = require('../models/gameModel');
 const { BAD_REQUEST, SUCCESS, CONFLICT, CREATED } = require('../services/httpStatuses');
-const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound, gameAlreadyRegistered, noGamesToSubtract, gameRegistered } = require('../services/messages');
+const { invalidEntries, noGameName, mustHaveStock, noFreeGame, noImageFound, gameAlreadyRegistered, noGamesToSubtract, gameRegistered, gamesSubtracted } = require('../services/messages');
 const { fieldFinder } = require('../services/validators');
 
 const GameController = new Router();
@@ -51,7 +51,7 @@ GameController.post('/checkout', async (req, res) => {
 
   await Promise.all(games.map((game) => subtractFromStock(game)));
 
-  return res.status(SUCCESS).json();
+  return res.status(SUCCESS).json(gamesSubtracted);
 });
 
 GameController.get('/all', tokenVerifier, async (_req, res) => {

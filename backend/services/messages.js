@@ -60,7 +60,10 @@ const noGamesToSubtract = {
 
 const gameRegistered = { message: 'Jogo registrado.' };
 
+const gamesSubtracted = { message: 'Jogos vendidos!' };
+
 module.exports = {
+  gamesSubtracted,
   gameRegistered,
   noGamesToSubtract,
   gameAlreadyRegistered,

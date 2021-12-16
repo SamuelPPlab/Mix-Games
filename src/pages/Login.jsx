@@ -12,7 +12,6 @@ const Login = () => {
   const [passwordInput, setPasswordInput] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const [redirect, setRedirect] = useState(false);
-  const [notRegistered, setNotRegistered] = useState(false);
 
   useEffect(() => {
     const isEmailValid = emailValidator(email);
@@ -57,7 +56,9 @@ const Login = () => {
   const emailWarning = <div className="warningText">O email deve ter o formato correto.</div>;
   const passwordLengthWarning = <div className="warningText">A senha deve ter pelo menos oito caracteres.</div>;
   const notRegisteredWarning = <div className="warningText">Usuário não registrado ou senha inválida!</div>;
-  const noAccount = <pre id="loginNav" className="nav-link">Ainda não possui cadastro? <Link to="/signup">Cadastre-se</Link></pre>;
+  const noAccount = <pre id="loginNav" className="nav-link">
+    Ainda não possui cadastro? <Link to="/signup">Cadastre-se</Link>
+  </pre>;
 
   if(redirect) return <Navigate to="/main" />;
 

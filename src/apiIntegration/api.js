@@ -1,3 +1,5 @@
+import { getLocalStorageKey } from "../services/getKey";
+
 export const postUser = (userName, email, password) => {
   const URL = 'http://localhost:3001/users/create';
   return fetch(URL, {
@@ -9,10 +11,21 @@ export const postUser = (userName, email, password) => {
   }).then((r) => r);
 };
 
+export const login = (email, password) => {
+  const URL = 'http://localhost:3001/users/login';
+  return fetch(URL, {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((r) => r.json());
+}
+
 export const fetchAllGames = () => {
   const URL = 'http://localhost:3001/games/all';
 
-  const token = JSON.parse(localStorage.getItem('mix-token'));
+  const token = getLocalStorageKey('mixToken');
 
   return fetch(URL, {
     headers: {
@@ -24,7 +37,7 @@ export const fetchAllGames = () => {
 export const buyGames = (buyList) => {
   const URL = 'http://localhost:3001/games/checkout';
 
-  const token = JSON.parse(localStorage.getItem('mix-token'));
+  const token = getLocalStorageKey('mixToken');
 
   return fetch(URL, {
     method: 'POST',
@@ -33,13 +46,13 @@ export const buyGames = (buyList) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(buyList),
-  });
+  }).then((r) => r.json());
 };
 
 export const postGame = (gameName, price, quantity, image) => {
   const URL = 'http://localhost:3001/games/create';
 
-  const token = JSON.parse(localStorage.getItem('mix-token'));
+  const token = getLocalStorageKey('mixToken');
 
   return fetch(URL, {
     method: 'POST',

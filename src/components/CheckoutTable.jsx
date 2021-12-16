@@ -7,7 +7,8 @@ import { getLocalStorageKey } from "../services/getKey";
 import { buyGames } from "../apiIntegration/api";
 
 const CheckoutTable = ({ products, setProducts }) => {
-  const [goToMain, setGoToMain] = useState(false);
+  const [goToLogin, setGoToLogin] = useState(false);
+  const [responseMessage, setResponseMessage] = useState(false);
 
   const removeItemFromCart = {
     name: 'X',
@@ -27,14 +28,20 @@ const CheckoutTable = ({ products, setProducts }) => {
   const handlePurchaseClick = () => {
     let cartItems = getLocalStorageKey('mixCheckout');
     cartItems = cartItems.map(({ gameName, quantity }) => ({ gameName, quantity }));
-    const teste = buyGames(cartItems);
-    console.log(teste)
+
+    buyGames(cartItems).then((r) => setResponseMessage(r.message));
+
+    if (responseMessage === 'Jogos vendidos!') {
+      localStorage.setItem('mixCheckout', '[]');
+      localStorage.setItem('mixToken', '[]');
+      return setGoToLogin(true);
+    }
   };
 
   let total = products.reduce((a, { price }) => (a + parseFloat(price)), 0).toFixed(2);
   total = total.split('.');
 
-  if(goToMain) return <Navigate to="/main" />;
+  if(goToLogin) return <Navigate to="/" />;
 
   return(
     <div id="tableContainer">      
