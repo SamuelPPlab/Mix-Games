@@ -1,3 +1,4 @@
+const { json } = require('express/lib/response');
 const connection = require('./connection');
 
 const collection = 'stock';
@@ -20,7 +21,17 @@ const getAllGames = () => (
   ))
 );
 
+const subtractFromStock = ({ gameName, quantity }) => {
+  connection().then((db) => (
+    db.collection(collection).updateOne(
+      { gameName },
+      { $set: { quantity: parseInt(quantity) - 1 } },
+    )
+  ))
+};
+
 module.exports = {
+  subtractFromStock,
   getAllGames,
   addGame,
   findGameByName,
