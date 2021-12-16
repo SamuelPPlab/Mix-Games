@@ -14,7 +14,14 @@ const findGameByName = (gameName) => (
   ))
 );
 
+const getAllGames = () => (
+  connection().then((db) => (
+    db.collection(collection).find().toArray()
+  ))
+);
+
 module.exports = {
+  getAllGames,
   addGame,
   findGameByName,
 };
