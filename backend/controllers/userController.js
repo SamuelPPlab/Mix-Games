@@ -8,8 +8,8 @@ const tokenCreator = require('../auth/tokenCreator');
 const UserController = new Router();
 
 UserController.post('/create', async (req, res) => {
-  const { email, password, userName } = req.body;
-  const requiredFields = ['userName', 'password', 'email'];
+  const { email, password } = req.body;
+  const requiredFields = ['password', 'email'];
   const doRequiredFieldsExist = fieldFinder(req.body, requiredFields);
   const isEmailValid = emailValidator(email);
 
@@ -23,8 +23,8 @@ UserController.post('/create', async (req, res) => {
     return res.status(CONFLICT).json(emailAlreadyExists);
   }
 
-  const { insertedId } = await createUser(userName, email, password);
-  const user = { id: insertedId, userName, email, password };
+  const { insertedId } = await createUser( email, password);
+  const user = { id: insertedId, email, password };
   const token = tokenCreator(user);
 
   return res.status(CREATED).json({ token });

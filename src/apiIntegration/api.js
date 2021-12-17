@@ -1,6 +1,6 @@
 import { getLocalStorageKey } from "../services/getKey";
 
-export const postUser = (userName, email, password) => {
+export const postUser = (email, password) => {
   /*
     Função para enviar dados de cadastro do usuário
   */
@@ -8,7 +8,7 @@ export const postUser = (userName, email, password) => {
   const URL = 'http://localhost:3001/users/create';
   return fetch(URL, {
     method: 'POST',
-    body: JSON.stringify({ userName, email, password }),
+    body: JSON.stringify({ email, password }),
     headers: {
       'Content-Type': 'application/json',
     },

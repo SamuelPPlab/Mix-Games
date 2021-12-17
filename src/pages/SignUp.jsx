@@ -32,7 +32,7 @@ const SignUp = () => {
     const isPasswordValid = passwordLengthValidator(passwordInput);
     const doPasswordsMatch = passwordMatcher(passwordInput, confirmPassword);
 
-    if(isEmailValid && isUsernameValid && isPasswordValid && doPasswordsMatch) {
+    if(isEmailValid && isPasswordValid && doPasswordsMatch) {
       return setDisableSignUp(false);
     }
     setDisableSignUp(true);
