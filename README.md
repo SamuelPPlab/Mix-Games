@@ -29,7 +29,7 @@ A ideia do projeto é criar uma simulação de uma loja que permite que o usuár
 
 ### Tela de Cadastro:
 
-A tela de cadastro é onde o uso do projeto começa. Nela é preciso preencher quatro campos - Seu nome, seu email, senha;
+A tela de cadastro é onde o uso do projeto começa. Nela é preciso preencher três campos - seu email, sua senha, e confirmação de senha;
 
 ![Imagem da tela de cadastro](./src/images/PageImages/Signup-Inicial.png)
 
