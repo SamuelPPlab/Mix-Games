@@ -8,10 +8,6 @@ import '../css/styles.css';
 import { postUser } from "../apiIntegration/api";
 
 const SignUp = () => {
-
-  const [fullName, setFullName] = useState('');
-  // Estado para guardar dados do nome do usuario
-
   const [email, setEmail] = useState('');
   // Estado para guardar dados do email
 
@@ -32,7 +28,6 @@ const SignUp = () => {
 
   useEffect(() => {
     // Função para observar os estados dos inputs, e validar cada um
-    const isUsernameValid = validateUserName(fullName);
     const isEmailValid = emailValidator(email);
     const isPasswordValid = passwordLengthValidator(passwordInput);
     const doPasswordsMatch = passwordMatcher(passwordInput, confirmPassword);
@@ -41,17 +36,7 @@ const SignUp = () => {
       return setDisableSignUp(false);
     }
     setDisableSignUp(true);
-  }, [fullName, email, passwordInput, confirmPassword]);
-
-
-  const nameProps = {
-    id: 'mix-nome-completo-signup',
-    name: 'Nome Completo',
-    fieldValue: fullName,
-    setFieldValue: setFullName,
-    placeholder: 'Qual seu nome?',
-    placeholderClass: fullName === '' ? 'placeholderSpan' : 'placeholderSpanFocus  signupPlaceholder',
-  };
+  }, [email, passwordInput, confirmPassword]);
 
   const emailProps = {
     id: "mix-email-signup",
@@ -87,7 +72,7 @@ const SignUp = () => {
     // Função para tratar os dados da resposta da api e liberar o botão
     // ou avisar que algum dado não é válido
 
-    const response = await postUser(fullName, email, passwordInput);
+    const response = await postUser(email, passwordInput);
     const created = 201;
     if (response.status !== created) {
       const { message } = await response.json();
@@ -137,10 +122,6 @@ const SignUp = () => {
       <img className="backgroundImage" src={SignupImage} alt="Background" />
       <div className="leftSideForm">
         <h1 className="orange-title">Crie sua conta</h1>
-        <div className="halfScreenWidth">
-          <Input {...nameProps} />
-          {(!validateUserName(fullName) && fullName !== '') && nameWarning}
-        </div>
         <div className="halfScreenWidth">
           <Input {...emailProps} />
           {(!emailValidator(email) && email !== '') && emailWarning}
