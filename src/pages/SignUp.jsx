@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from '../components/Input';
 import { Link, Navigate } from "react-router-dom";
 import Button from '../components/Button';
-import { emailValidator, passwordLengthValidator, passwordMatcher, validateUserName } from "../services/validators";
+import { emailValidator, passwordLengthValidator, passwordMatcher } from "../services/validators";
 import SignupImage from '../images/SignupImage.jpg';
 import '../css/styles.css';
 import { postUser } from "../apiIntegration/api";
@@ -98,10 +98,6 @@ const SignUp = () => {
   const alreadySingnedUp = <pre id="navsignup" className="nav-link">
     Já possui um cadastro? <Link to="/">Login</Link>
   </pre>;
-
-  const nameWarning = <div className="warningText">
-  O nome deve conter apenas letras!
-  </div>;
 
   const emailWarning = <div className="warningText">
   O email deve ter o formato correto.
