@@ -58,7 +58,7 @@ Ela também avisa caso os dados sejam inválidos, e o botão "Entrar" apenas é 
 
 Aqui é onde todos os cards dos jogos ficam. Ela também tem a opção para ir à tela de registrar jogos, e visitar o carrinho.
 
-![Imagem da tela principal](./src/images/PageImages/Main-Page-Inicial.png)
+![Imagem da tela principal](./src/images/PageImages/MainPage-Inicial.png)
 
 É possível adicionar apenas uma cópia de um jogo no carrinho, depois disso o botão de adicionar no carrinho fica desativado.
 
