@@ -5,7 +5,7 @@ const collection = 'stock';
 
 const addGame = ({ gameName, price, quantity, image }) => (
   connection().then((db) => (
-    db.collection(collection).insertOne({ gameName, price, quantity, image })
+    db.collection(collection).insertOne({ gameName, price: parseInt(price), quantity, image })
   ))
 );
 

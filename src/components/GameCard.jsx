@@ -14,8 +14,12 @@ const GameCard = ({ data }) => {
     // Função para ver se o jogo está no carrinho
     const checkout = getLocalStorageKey('mixCheckout');
     const isItemInCart = checkout.find((item) => item.gameName === gameName);
+    if (quantity === 0) {
+      // Condicional para negar a compra de itens sem estoque
+      setGameInCart(true);
+    }
 
-    if(isItemInCart) {
+    if (isItemInCart) {
       setGameInCart(true);
     }
   }, [isGameInCart, gameName]);
