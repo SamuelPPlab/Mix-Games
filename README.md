@@ -33,7 +33,7 @@ A tela de cadastro é onde o uso do projeto começa. Nela é preciso preencher t
 
 ![Imagem da tela de cadastro](./src/images/PageImages/Signup-Inicial.png)
 
-Esses quatro campos têm avisos para cada um deles quando os dados preenchidos são inválidos;
+Esses campos têm avisos para cada um deles quando os dados preenchidos são inválidos;
 
 ![Imagem da tela de cadastro com avisos](./src/images/PageImages/Signup-Avisos.png)
 
