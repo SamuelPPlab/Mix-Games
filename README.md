@@ -1,6 +1,8 @@
 # Olá, bem vindo ao Readme.md do projeto Mix-games
 
+### Como instalar:
 
+Depois de clonar o repositório, dê um **npm install**, e para rodar o projeto dê um **npm start** - para iniciar o front, e **npm run backend** - para iniciar o back. Caso esteja no linux, será preciso mudar a variável para acessar o MongoDB. Deixei uma variável com a URL correta no arquivo ./backend/models/connection.js - basta mudar a variável com o nome  MONGO_DB_URL_WINDOWS para MONGO_DB_URL_LINUX
 
 ### A idéia do projeto:
 
