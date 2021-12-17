@@ -22,7 +22,7 @@ const GameCard = ({ data }) => {
     if (isItemInCart) {
       setGameInCart(true);
     }
-  }, [isGameInCart, gameName]);
+  }, [isGameInCart, gameName, quantity]);
 
   const addToCartButtonProps = {
     name: 'Adicionar ao carrinho',
