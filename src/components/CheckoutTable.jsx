@@ -8,7 +8,10 @@ import { buyGames } from "../apiIntegration/api";
 
 const CheckoutTable = ({ products, setProducts }) => {
   const [goToLogin, setGoToLogin] = useState(false);
+  // Estado para controlar se o usuario deve ser redirecionado para o login
+
   const [responseMessage, setResponseMessage] = useState(false);
+  // Estado para guardar respostas da APi
 
   const removeItemFromCart = {
     name: 'X',
@@ -16,6 +19,7 @@ const CheckoutTable = ({ products, setProducts }) => {
   };
 
   const handleRemoveClick = (gameName) => {
+    // Função para remover um item do carrinho - tanto do estado quanto local storage
     removeGameFromCart(gameName);
     setProducts(products.filter((item) => item.gameName !== gameName));
   };
@@ -26,6 +30,7 @@ const CheckoutTable = ({ products, setProducts }) => {
   };
 
   const handlePurchaseClick = () => {
+    // Função que limpa o carrinho, e regireciona para o login quando algo é "comprado"
     let cartItems = getLocalStorageKey('mixCheckout');
     cartItems = cartItems.map(({ gameName, quantity }) => ({ gameName, quantity }));
 
@@ -38,6 +43,7 @@ const CheckoutTable = ({ products, setProducts }) => {
     }
   };
 
+  // Cálculo do total
   let total = products.reduce((a, { price }) => (a + parseFloat(price)), 0).toFixed(2);
   total = total.split('.');
 
