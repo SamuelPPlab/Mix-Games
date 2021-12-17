@@ -6,11 +6,16 @@ import '../css/styles.css';
 
 const MainPage = () => {
   const [games, setGames] = useState([]);
+  // Estados para guardar os dados dos jogos
+
   const [response, setResponse] = useState(false);
+  // Estados para guardar os dados da resposta da api
+
   const [backToLogin, setBackToLogin] = useState(false);
+  // Estado que controla se o usuário é redirecionado para a tela principa
 
   useEffect(() => {
-    
+    // Função que trata as respostas da api e responde de acordo com a resposta da mesma
     if(!response) {
       fetchAllGames().then((r) => setResponse(r));
     }
