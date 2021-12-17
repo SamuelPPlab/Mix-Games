@@ -1,3 +1,5 @@
+// Funções de validação
+
 export const emailValidator = (email) => {
   return (/^([\w.%+-]+)@([\w-]+\.)+([\w]{3})$/i.test(email));
 };

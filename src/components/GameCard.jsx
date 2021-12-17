@@ -5,10 +5,13 @@ import '../css/styles.css';
 
 const GameCard = ({ data }) => {
   const { gameName, image, price, quantity } = data;
+  // Propriedades de cada objeto de jogo
 
   const [isGameInCart, setGameInCart] = useState(false);
+  // Estado para observar se o jogo está no carrinho.
 
   useEffect(() => {
+    // Função para ver se o jogo está no carrinho
     const checkout = getLocalStorageKey('mixCheckout');
     const isItemInCart = checkout.find((item) => item.gameName === gameName);
 
@@ -21,6 +24,7 @@ const GameCard = ({ data }) => {
     name: 'Adicionar ao carrinho',
     id: 'mix-add-to-cart',
     onClick: () => {
+      // Função para adicionar o jogo ao carrinho no local storage
       setGameInCart(true);
       const shoppingCart = getLocalStorageKey('mixCheckout');
       localStorage.setItem('mixCheckout', JSON.stringify([...shoppingCart, data]));

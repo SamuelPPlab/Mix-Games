@@ -1,6 +1,10 @@
 import { getLocalStorageKey } from "../services/getKey";
 
 export const postUser = (userName, email, password) => {
+  /*
+    Função para enviar dados de cadastro do usuário
+  */
+
   const URL = 'http://localhost:3001/users/create';
   return fetch(URL, {
     method: 'POST',
@@ -12,6 +16,10 @@ export const postUser = (userName, email, password) => {
 };
 
 export const login = (email, password) => {
+  /*
+    Função para enviar dados de login
+  */
+
   const URL = 'http://localhost:3001/users/login';
   return fetch(URL, {
     method: 'POST',
@@ -23,6 +31,10 @@ export const login = (email, password) => {
 }
 
 export const fetchAllGames = () => {
+  /*
+    Função para buscar todos os games já registrados
+  */
+
   const URL = 'http://localhost:3001/games/all';
 
   const token = getLocalStorageKey('mixToken');
@@ -35,6 +47,11 @@ export const fetchAllGames = () => {
 };
 
 export const buyGames = (buyList) => {
+
+  /*
+    Função para enviar dados de compra do carrinho do usuario
+  */
+
   const URL = 'http://localhost:3001/games/checkout';
 
   const token = getLocalStorageKey('mixToken');
@@ -50,6 +67,10 @@ export const buyGames = (buyList) => {
 };
 
 export const postGame = (gameName, price, quantity, image) => {
+  /*
+    Função para salvar dados de novos jogos
+  */
+
   const URL = 'http://localhost:3001/games/create';
 
   const token = getLocalStorageKey('mixToken');

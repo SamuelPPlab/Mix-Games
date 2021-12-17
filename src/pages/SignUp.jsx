@@ -10,14 +10,28 @@ import { postUser } from "../apiIntegration/api";
 const SignUp = () => {
 
   const [fullName, setFullName] = useState('');
+  // Estado para guardar dados do nome do usuario
+
   const [email, setEmail] = useState('');
+  // Estado para guardar dados do email
+
   const [passwordInput, setPasswordInput] = useState('');
+  // Estado para guardar dados da senha
+
   const [confirmPassword, setConfirmPassword] = useState('');
+  // Estado para guardar os dados da confirmação de senha
+
   const [goToMain, setGoToMain] = useState(false);
+  // Estado que permite o redirecionamento para a pagina principal caso dados sejam validos
+
   const [disableSignUp, setDisableSignUp] = useState(true);
+  // Estado para controlar a ativação do botão Entrar
+
   const [Rmessage, setRMessage] = useState('');
+  // Estado para guardar resposta da API
 
   useEffect(() => {
+    // Função para observar os estados dos inputs, e validar cada um
     const isUsernameValid = validateUserName(fullName);
     const isEmailValid = emailValidator(email);
     const isPasswordValid = passwordLengthValidator(passwordInput);
@@ -70,6 +84,9 @@ const SignUp = () => {
   };
 
   const handleClick = async () => {
+    // Função para tratar os dados da resposta da api e liberar o botão
+    // ou avisar que algum dado não é válido
+
     const response = await postUser(fullName, email, passwordInput);
     const created = 201;
     if (response.status !== created) {
@@ -90,6 +107,8 @@ const SignUp = () => {
     disabled: disableSignUp,
     className: 'mix-left-form-submit',
   };
+
+  // Avisos sobre os inputs
 
   const alreadySingnedUp = <pre id="navsignup" className="nav-link">
     Já possui um cadastro? <Link to="/">Login</Link>
@@ -139,7 +158,7 @@ const SignUp = () => {
         <Button {...signUpButtonProps} />
       </div>
     </div>
-  )
+  );
 };
 
 export default SignUp;

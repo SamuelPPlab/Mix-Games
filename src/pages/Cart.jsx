@@ -6,9 +6,13 @@ import { getLocalStorageKey } from "../services/getKey";
 
 const Cart = () => {
   const [products, setProducts] = useState(false);
+  // Estado para guardar os itens adicionados ao carrinho
+
   const [goToMain, setGoToMain] = useState(false);
+  // Estado para dar a opção de voltar para a tela de compra ao usuario
 
   useEffect(() => {
+    // Função para buscar os produtos salvos no carrinho
     const itemsOnCart = getLocalStorageKey('mixCheckout');
     if(!products) {
       setProducts(itemsOnCart);
@@ -21,7 +25,6 @@ const Cart = () => {
     onClick: () => setGoToMain(true),
   };
 
-  if (!products) return <div>Loading</div>;
   if (goToMain) return <Navigate to="/main" />;
 
   return(
