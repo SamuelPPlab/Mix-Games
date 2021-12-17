@@ -10,7 +10,7 @@ export const saveGameData = (game, price, stock, image) => {
     image,
   };
 
-  localStorage.setItem('gameStock', JSON.stringify([...productsInStock, newGame]))
+  localStorage.setItem('gameStock', JSON.stringify([...productsInStock, newGame]));
 };
 
 export const removeGameFromCart = (gameName) => {

@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Olá, bem vindo ao Readme.md do projeto Mix-games
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+### A idéia do projeto:
 
-### `npm start`
+A ideia do projeto é criar uma simulação de uma loja que permite que o usuário se registre, faça login, possa registrar jogos, liste os jogos e permita que os jogos sejam adicionados ao carrinho.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Tecnologias usadas:
 
-### `npm test`
+##### Backend:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- MongoDB;
+- Express;
+- JSON Webtoken;
+- Nodemon;
 
-### `npm run build`
+###### Front End:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React;
+- CSS;
+- HTML;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Descrição do projeto:
 
-### `npm run eject`
+### Tela de Cadastro:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+A tela de cadastro é onde o uso do projeto começa. Nela é preciso preencher quatro campos - Seu nome, seu email, senha;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Imagem da tela de cadastro](./src/images/PageImages/Signup-Inicial.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Esses quatro campos têm avisos para cada um deles quando os dados preenchidos são inválidos;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Imagem da tela de cadastro com avisos](./src/images/PageImages/Signup-Avisos.png)
 
-## Learn More
+Quando os dados são válidos, o botão "Cadastrar" é liberado e permite que o usuário se registre.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Imagem da tela de cadastro preenchida com dados válidos](./src/images/PageImages/Signup-Dados-Validos.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Tela de Login:
 
-### Analyzing the Bundle Size
+Essa tela como o nome diz, serve para fazer login. Ela precisa de dois dados - Email, senha.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Imagem da tela inicial de login](./src/images/PageImages/Login-Inicial.png)
 
-### Making a Progressive Web App
+Ela também avisa caso os dados sejam inválidos, e o botão "Entrar" apenas é liberado se os dados forem válidos:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Imagem dos avisos da tela de login](./src/images/PageImages/Login-InformacaoErrada.png)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Tela principal:
 
-### Deployment
+Aqui é onde todos os cards dos jogos ficam. Ela também tem a opção para ir à tela de registrar jogos, e visitar o carrinho.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Imagem da tela principal](./src/images/PageImages/Main-Page-Inicial.png)
 
-### `npm run build` fails to minify
+É possível adicionar apenas uma cópia de um jogo no carrinho, depois disso o botão de adicionar no carrinho fica desativado.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Imagem da tela principal com alguns jogos no carrinho](./src/images/PageImages/MainPage-ItensNoCarrinho.png)
+
+
+### Tela de registro de jogos:
+
+Aqui é onde os jogos são registrados, ela tem quatro campos que pedem o nome do jogo, url da imagem da capa, quantidade de estoque, e preço.
+
+![Tela de registro de jogos](./src/images/PageImages/RegisterGame-InicialAvisos.png)
+
+Quando os campos são preenchidos com dados válidos, o botão de submit é desbloqueado.
+
+![Tela de registro de jogos preenchida](./src/images/PageImages/RegisterGame-Preenchida.png)
+
+Assim que o botão é clicado, o usuario é redirecionado para a pagina principal, e o novo jogo é adicionado nela.
+
+![Novo jogo na tela](./src/images/PageImages/RegisterGame-NovoJogo.png)
+
+
+### Carrinho:
+
+No carrinho, todos os itens que foram adicionados na pagina principal aparecem numa tabela, com a opção de retirá-los da lista ao clicar no botão "X", além da opção de comprar, e voltar pra pagina principal. Quando o botão "Comprar" é clicado, a quantidade de cada item no estoque é diminuída em um, e o usuário é redirecionado para a página de login.
+
+![Tela de checkout](./src/images/PageImages/Carrinho-ComItens.png)
+
+A tabela de produtos não aparece se o carrinho estiver vazio, apenas é mostrado um aviso, e a opção de voltar à tela principal.
+
+![Carrinho vazio](./src/images/PageImages/Carrinho-Vazio.png)
+
